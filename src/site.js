@@ -25,7 +25,7 @@ document.addEventListener('click', (e) => {
 });
 
 /* ---------- theme ---------- */
-const themeMeta = { terminal: '#04110b', nebula: '#0b0720', blueprint: '#f3f6fb' };
+const themeMeta = { terminal: '#04110b', nebula: '#0b0720', blueprint: '#071226' };
 function setTheme(id, save = true) {
   if (!themeMeta[id]) return;
   root.dataset.theme = id;
@@ -381,7 +381,7 @@ function startGlobe(fig, flat) {
     ctx.clearRect(0, 0, size, size);
 
     const g = ctx.createRadialGradient(cx - r * 0.3, cy - r * 0.35, r * 0.1, cx, cy, r * 1.05);
-    g.addColorStop(0, theme === 'blueprint' ? 'rgba(31,95,214,0.10)' : 'rgba(255,255,255,0.07)');
+    g.addColorStop(0, theme === 'blueprint' ? 'rgba(91,155,255,0.12)' : 'rgba(255,255,255,0.07)');
     g.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = g;
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();

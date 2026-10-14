@@ -214,11 +214,11 @@
     },
     {
       "id": "nebula",
-      "color": "#0d0820"
+      "color": "#0b0720"
     },
     {
       "id": "blueprint",
-      "color": "#f3f6fb"
+      "color": "#071226"
     }
   ],
   "defaultTheme": "terminal",
