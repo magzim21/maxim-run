@@ -4,7 +4,7 @@ Max Onyx's personal site: DevOps and automation, talents, round-the-world travel
 Six languages (en, ru, uk, es, zh, he), three themes (Terminal, Nebula, Blueprint), no third-party code.
 
 - Live: https://maxim.run (www.maxim.run redirects there)
-- Roadmap and tasks: [Notion goal](https://app.notion.com/p/2c6b399fe9c280e5a967f233208231d0)
+- Project: [My Apps row](https://app.notion.com/p/3f9b399fe9c28166a358d5f810abfec8); roadmap and tasks: [Notion goal](https://app.notion.com/p/2c6b399fe9c280e5a967f233208231d0)
 - Hosting, DNS and the GitHub repository are Terraform in
   [magzim21/repo-as-a-code](https://github.com/magzim21/repo-as-a-code) (`maxim-run.tf`, entry `maxim-run` in `main.tf`).
 
