@@ -107,3 +107,32 @@ test('unknown paths get the 404 page', async ({ page }) => {
   expect(res.status()).toBe(404);
   await expect(page.locator('h1')).toContainText('404');
 });
+
+test('ring icons are whole, steady under the cursor, and not on white tiles', async ({ page, isMobile }) => {
+  await page.goto('/');
+  const hero = await page.locator('.hero').boundingBox();
+  const links = page.locator('.orbit__link');
+  await expect(links).toHaveCount(10);
+  for (const box of await links.evaluateAll((els) => els.map((e) => e.getBoundingClientRect().toJSON()))) {
+    expect(box.left, 'ring icon cut on the left').toBeGreaterThanOrEqual(hero.x - 1);
+    expect(box.right, 'ring icon cut on the right').toBeLessThanOrEqual(hero.x + hero.width + 1);
+  }
+  const tiles = await page.locator('.orbit__link--codelaw .orbit__face, .orbit__link--leadpancakes .orbit__face, .orbit__link--mediaarchive .orbit__face')
+    .evaluateAll((els) => els.map((e) => getComputedStyle(e).backgroundColor));
+  for (const bg of tiles) expect(bg).not.toBe('rgb(255, 255, 255)');
+  if (isMobile) return; // hover is a desktop interaction
+  const first = links.first();
+  // The ring keeps moving until the cursor is over it, so aim twice: the second aim hits a paused ring.
+  for (let i = 0; i < 2; i++) {
+    const box = await first.boundingBox();
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.waitForTimeout(300);
+  }
+  const a = await first.boundingBox();
+  await page.waitForTimeout(700);
+  const b = await first.boundingBox();
+  expect(Math.abs(a.x - b.x) + Math.abs(a.y - b.y), 'icon moved under the cursor').toBeLessThan(1);
+  await expect(page.locator('[data-tipbox]')).toHaveClass(/is-on/);
+  await page.mouse.move(b.x + b.width / 2 + 3, b.y + b.height / 2 + 3); // still inside the icon
+  await expect(page.locator('[data-tipbox]')).toHaveClass(/is-on/);
+});

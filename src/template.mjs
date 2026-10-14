@@ -158,7 +158,7 @@ function hero({ config, t, stats }) {
       <div><dt>${esc(t.hero.statLaps)}</dt><dd data-count="1">1</dd></div>
     </dl>
   </div>
-  <div class="hero__media" data-tilt>
+  <div class="hero__media">
     <div class="halo" aria-hidden="true"></div>
     <ul class="orbit" aria-label="${esc(t.hero.orbit)}">${orbit}</ul>
     <img class="portrait" src="${config.person.image}" srcset="/img/max-onyx-420.webp 420w, /img/max-onyx-720.webp 720w" sizes="(max-width: 760px) 78vw, 420px" width="720" height="1081" alt="${esc(t.hero.photoAlt)}" fetchpriority="high">

@@ -136,7 +136,7 @@ $$('.glitch').forEach((g) => {
 /* ---------- tilt ---------- */
 if (!reduced && matchMedia('(hover: hover)').matches) {
   $$('[data-tilt]').forEach((el) => {
-    const max = el.classList.contains('hero__media') ? 6 : 9;
+    const max = 9;
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width - 0.5;
@@ -182,7 +182,11 @@ if (tip) {
     tip.style.top = `${r.bottom + 8}px`;
     tip.classList.add('is-on');
   });
-  document.addEventListener('mouseout', (e) => { if (e.target.closest('[data-tip]')) tip.classList.remove('is-on'); });
+  document.addEventListener('mouseout', (e) => {
+    const el = e.target.closest('[data-tip]');
+    // Moving between an element's own children is not leaving it: keep the tip (no flicker).
+    if (el && !(e.relatedTarget && el.contains(e.relatedTarget))) tip.classList.remove('is-on');
+  });
 }
 
 /* ---------- background canvas: matrix rain, starfield or network, by theme (src/bg.js) ---------- */

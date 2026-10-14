@@ -185,7 +185,7 @@ h3 { font-size: 20px; }
 [data-theme='nebula'] .btn--primary { background: linear-gradient(120deg, var(--accent), #7c5cff 60%, var(--accent-2)); color: #fff; }
 
 /* ---------- hero ---------- */
-.hero { overflow-x: clip; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; min-height: calc(100vh - 64px); padding-block: 40px 80px; position: relative; }
+.hero { overflow-x: clip; container-type: inline-size; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; min-height: calc(100vh - 64px); padding-block: 40px 80px; position: relative; }
 .prompt { font: 400 15px/1.4 'JetBrains Mono', monospace; color: var(--muted); margin: 0 0 18px; text-align: start; }
 .prompt__user { color: var(--accent); }
 .prompt__path { color: var(--accent-2); }
@@ -211,7 +211,12 @@ h3 { font-size: 20px; }
 .stats dd { margin: 0; font: 800 clamp(30px, 4vw, 44px)/1 var(--display); color: var(--fg); }
 .stats dt { color: var(--muted); font-size: 14px; }
 
-.hero__media { position: relative; justify-self: center; width: min(420px, 78vw); aspect-ratio: 720 / 1081; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1); }
+.hero__media {
+  /* The ring (radius = half the portrait + 36px, icons 46px) must stay inside its half of the hero. */
+  --mw: min(420px, calc(50cqw - 20px - 120px));
+  --ring: calc(var(--mw) / 2 + 36px);
+  position: relative; justify-self: center; width: var(--mw); aspect-ratio: 720 / 1081;
+}
 .halo { position: absolute; inset: -12% -22% 10%; background: var(--halo); filter: blur(10px); animation: breathe 7s ease-in-out infinite; }
 .portrait {
   position: relative; width: 100%; height: 100%; object-fit: contain;
@@ -227,12 +232,14 @@ h3 { font-size: 20px; }
 [data-theme='nebula'] .scan::after { background: linear-gradient(to bottom, transparent, rgba(255, 79, 216, 0.16), transparent); }
 [data-theme='blueprint'] .scan::after { background: linear-gradient(to bottom, transparent, rgba(91, 155, 255, 0.16), transparent); }
 .orbit { position: absolute; z-index: 2; left: 50%; top: 42%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; animation: spin 48s linear infinite; }
-.orbit li { position: absolute; left: 0; top: 0; width: 46px; height: 46px; margin: -23px; transform: rotate(calc(360deg / var(--n) * var(--i))) translate(min(250px, 46vw)) rotate(calc(-360deg / var(--n) * var(--i))); }
-.orbit__link { display: block; width: 100%; height: 100%; border-radius: 14px; }
-.orbit__face { display: grid; place-items: center; width: 100%; height: 100%; padding: 9px; border-radius: 14px; color: var(--brand, var(--accent)); background: var(--card-2); border: 1px solid var(--line); box-shadow: 0 8px 24px -8px var(--glow); animation: spin 48s linear infinite reverse; transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1), border-color 0.25s, box-shadow 0.25s; }
+.orbit li { position: absolute; left: 0; top: 0; width: 46px; height: 46px; margin: -23px; transform: rotate(calc(360deg / var(--n) * var(--i))) translate(var(--ring)) rotate(calc(-360deg / var(--n) * var(--i))); }
+.orbit__link { display: block; width: 100%; height: 100%; border-radius: 14px; transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1); }
+.orbit__link:hover, .orbit__link:focus-visible { transform: scale(1.18); }
+.orbit__face { display: grid; place-items: center; width: 100%; height: 100%; padding: 9px; border-radius: 14px; color: var(--brand, var(--accent)); background: var(--card-2); border: 1px solid var(--line); box-shadow: 0 8px 24px -8px var(--glow); animation: spin 48s linear infinite reverse; transition: border-color 0.25s, box-shadow 0.25s; }
 .orbit__face img, .orbit__face .i--logo { width: 100%; height: 100%; object-fit: contain; }
-.orbit__link:hover .orbit__face, .orbit__link:focus-visible .orbit__face { transform: scale(1.18); border-color: var(--brand, var(--accent)); box-shadow: 0 10px 30px -6px var(--brand, var(--glow)); }
-.orbit__link--codelaw .orbit__face, .orbit__link--leadpancakes .orbit__face, .orbit__link--mediaarchive .orbit__face { padding: 6px; background: #fff; }
+.orbit__link:hover .orbit__face, .orbit__link:focus-visible .orbit__face { border-color: var(--brand, var(--accent)); box-shadow: 0 10px 30px -6px var(--brand, var(--glow)); }
+.orbit__link--codelaw .orbit__face, .orbit__link--leadpancakes .orbit__face, .orbit__link--mediaarchive .orbit__face { padding: 6px; }
+.orbit__link--credly .orbit__face { padding: 4px; }
 .orbit__link--linkedin { --brand: #0a66c2; }
 .orbit__link--github { --brand: var(--fg); }
 .orbit__link--instagram { --brand: #e1306c; }
@@ -462,8 +469,7 @@ h3 { font-size: 20px; }
 @media (max-width: 760px) {
   body { font-size: 16px; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 28px; gap: 24px; }
-  .hero__media { order: -1; width: min(300px, 72vw); }
-  .orbit li { transform: rotate(calc(360deg / var(--n) * var(--i))) translate(min(170px, 39vw)) rotate(calc(-360deg / var(--n) * var(--i))); }
+  .hero__media { order: -1; --mw: min(300px, 72vw); --ring: min(170px, 39vw); }
   .orbit__face { padding: 7px; }
   .orbit li { width: 36px; height: 36px; margin: -18px; }
   .scrollhint { display: none; }
