@@ -136,3 +136,20 @@ test('ring icons are whole, steady under the cursor, and not on white tiles', as
   await page.mouse.move(b.x + b.width / 2 + 3, b.y + b.height / 2 + 3); // still inside the icon
   await expect(page.locator('[data-tipbox]')).toHaveClass(/is-on/);
 });
+
+test('the location chip scrolls to the globe and flies it to Vancouver Island', async ({ page }) => {
+  await page.goto('/ru/');
+  await page.locator('.hero .loc').click();
+  const globe = page.locator('[data-globe]');
+  await expect(globe).toBeInViewport({ ratio: 0.5, timeout: 5000 });
+  await expect(globe).toHaveAttribute('data-view', 'home', { timeout: 6000 });
+  await expect(globe).toHaveAttribute('data-home-label', 'Дом: остров Ванкувер');
+  // The home marker is drawn in the middle of the canvas: sample its colour there.
+  const lit = await globe.locator('canvas').evaluate((c) => {
+    const d = c.getContext('2d').getImageData(c.width / 2 - 6, c.height / 2 - 6, 12, 12).data;
+    let n = 0;
+    for (let i = 3; i < d.length; i += 4) if (d[i] > 200) n++;
+    return n;
+  });
+  expect(lit, 'home marker not in the centre').toBeGreaterThan(40);
+});

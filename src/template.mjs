@@ -154,7 +154,7 @@ function hero({ config, t, stats }) {
     <h1 class="glitch">${glitch(t.hero.h1)}</h1>
     <p class="roles"><span class="roles__arrow" aria-hidden="true">&gt;</span> <span class="roles__text" data-roles='${esc(JSON.stringify(t.hero.roles))}'>${esc(t.hero.roles[0])}</span><span class="caret" aria-hidden="true"></span></p>
     <p class="lede">${esc(t.hero.lede)}</p>
-    <p class="loc">${icon('pin')}<span class="loc__dot" aria-hidden="true"></span>${esc(t.hero.location)}</p>
+    <a class="loc" href="#travel" data-globe-home>${icon('pin')}<span class="loc__dot" aria-hidden="true"></span>${esc(t.hero.location)}</a>
     <div class="cta">
       <a class="btn btn--primary" href="${config.person.booking}" rel="noopener" target="_blank">${icon('calendar')}${esc(t.hero.ctaPrimary)}</a>
       <a class="btn btn--ghost" href="#shell">${icon('terminal')}${esc(t.hero.ctaSecondary)}</a>
@@ -309,7 +309,7 @@ function travel({ config, t, assets }) {
     <dl class="facts">${facts}</dl>
     <a class="btn btn--primary" href="${yt.url}" rel="me noopener" target="_blank">${icon('youtube-badge')}${esc(t.travel.youtube)}</a>
   </div>
-  <figure class="globe" data-globe data-land="/assets/${assets.land}" data-home="${lat},${lon}">
+  <figure class="globe" data-globe data-land="/assets/${assets.land}" data-home="${lat},${lon}" data-home-label="${esc(t.travel.home)}">
     <canvas width="560" height="560" aria-label="${esc(t.travel.route)}" role="img"></canvas>
     <figcaption><span class="legend legend--home">${esc(t.travel.home)}</span><span class="legend legend--route">${esc(t.travel.route)}</span><span class="legend legend--drag">${esc(t.travel.drag)}</span></figcaption>
   </figure>

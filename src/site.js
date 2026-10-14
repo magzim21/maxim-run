@@ -1,6 +1,7 @@
 // maxim.run client: themes, motion, background canvas, travel globe, shell. No third-party code.
 import { runCommand } from './shell.js';
 import { createBackground } from './bg.js';
+import { ease, nearestTurn, viewFacing } from './globe-math.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -205,7 +206,8 @@ if (globeEl) {
     if (!entries[0].isIntersecting) return;
     once.disconnect();
     const dots = await fetch(globeEl.dataset.land).then((r) => r.json()).catch(() => []);
-    startGlobe(globeEl, dots);
+    globeEl.flyHome = startGlobe(globeEl, dots);
+    if (globeEl.wantsHome) globeEl.flyHome();
   }, { rootMargin: '400px' });
   once.observe(globeEl);
 }
@@ -227,10 +229,21 @@ function startGlobe(fig, flat) {
   addEventListener('resize', resize);
 
   let rotLon = -homeLon * rad + 0.6;
-  const tilt = -22 * rad;
+  const TILT = -22 * rad;
+  let tilt = TILT;
+  let zoom = 1;
+  let label = 0; // 0..1, the home label's opacity
   let vel = reduced ? 0 : 0.0022;
   let drag = null;
-  canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, lon: rotLon }; canvas.setPointerCapture(e.pointerId); vel = 0; });
+  // fly: an eased move of lon/tilt/zoom from `from` to `to`; then() runs when it lands.
+  let fly = null;
+  let hold = 0;
+  const flyTo = (to, dur, then) => { fly = { from: { lon: rotLon, tilt, zoom }, to, t0: performance.now(), dur: reduced ? 1 : dur, then }; };
+  const backToSpin = () => flyTo({ lon: rotLon, tilt: TILT, zoom: 1 }, 1400, () => { vel = reduced ? 0 : 0.0022; delete fig.dataset.view; });
+  canvas.addEventListener('pointerdown', (e) => {
+    drag = { x: e.clientX, lon: rotLon }; canvas.setPointerCapture(e.pointerId); vel = 0;
+    if (fig.dataset.view === 'home') { fly = null; clearTimeout(hold); tilt = TILT; zoom = 1; label = 0; delete fig.dataset.view; }
+  });
   canvas.addEventListener('pointermove', (e) => { if (drag) rotLon = drag.lon + (e.clientX - drag.x) * 0.008; });
   canvas.addEventListener('pointerup', () => { drag = null; vel = reduced ? 0 : 0.0022; });
 
@@ -260,7 +273,7 @@ function startGlobe(fig, flat) {
     const z1 = v[2];
     const ct = Math.cos(tilt);
     const st = Math.sin(tilt);
-    const x2 = x1 * ct - z1 * st; // depth towards viewer
+    const x2 = x1 * ct - z1 * st; // depth towards viewer (same math as src/globe-math.js)
     const z2 = x1 * st + z1 * ct;
     return { x: y1, y: -z2, d: x2 };
   };
@@ -272,8 +285,16 @@ function startGlobe(fig, flat) {
     if (document.hidden) return;
     const dt = time - t0;
     t0 = time;
-    if (!drag) rotLon += vel * dt * 0.06;
-    const r = size * 0.42;
+    if (fly) {
+      const k = Math.min(1, (time - fly.t0) / fly.dur);
+      const e = ease(k);
+      rotLon = fly.from.lon + (fly.to.lon - fly.from.lon) * e;
+      tilt = fly.from.tilt + (fly.to.tilt - fly.from.tilt) * e;
+      zoom = fly.from.zoom + (fly.to.zoom - fly.from.zoom) * e;
+      if (k === 1) { const then = fly.then; fly = null; if (then) then(); }
+    } else if (!drag) rotLon += vel * dt * 0.06;
+    label += ((fig.dataset.view === 'home' ? 1 : 0) - label) * Math.min(1, dt / 250);
+    const r = size * 0.42 * zoom;
     const cx = size / 2;
     const cy = size / 2;
     const accent = css('--accent');
@@ -333,12 +354,43 @@ function startGlobe(fig, flat) {
       ctx.fillStyle = ctx.strokeStyle;
       ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 14 * dpr;
       ctx.beginPath(); ctx.arc(cx + hm.x * r, cy + hm.y * r, 5 * dpr, 0, Math.PI * 2); ctx.fill();
+      if (label > 0.02) {
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = label;
+        ctx.font = `600 ${15 * dpr}px Inter, system-ui, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.fillStyle = css('--fg');
+        ctx.fillText(fig.dataset.homeLabel, cx + hm.x * r, cy + hm.y * r - 18 * dpr);
+        ctx.textAlign = 'start';
+      }
     }
     ctx.shadowBlur = 0;
     ctx.globalAlpha = 1;
   };
   requestAnimationFrame(draw);
+
+  // Fly to home: turn the short way round, tip home to the middle, zoom in a little, label it,
+  // and after a while go back to spinning.
+  return () => {
+    clearTimeout(hold);
+    vel = 0;
+    const v = viewFacing(homeLat, homeLon);
+    flyTo({ lon: nearestTurn(rotLon, v.lon), tilt: v.tilt, zoom: 1.15 }, 1800, () => {
+      fig.dataset.view = 'home';
+      hold = setTimeout(backToSpin, 9000);
+    });
+  };
 }
+
+/* ---------- location chip: scroll to the globe and fly it home ---------- */
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('[data-globe-home]');
+  if (!a || !globeEl) return;
+  e.preventDefault();
+  globeEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+  if (globeEl.flyHome) globeEl.flyHome();
+  else globeEl.wantsHome = true; // the globe is still loading its map; it flies once ready
+});
 
 /* ---------- shell ---------- */
 const sh = $('[data-shell]');

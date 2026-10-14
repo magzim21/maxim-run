@@ -210,7 +210,9 @@ h3 { font-size: 20px; }
 .roles__arrow { color: var(--muted); }
 .caret { display: inline-block; width: 0.55em; height: 1em; margin-inline-start: 4px; vertical-align: -0.12em; background: var(--accent); animation: blink 1s steps(1) infinite; }
 .lede { font-size: clamp(18px, 2vw, 21px); max-width: 52ch; color: var(--fg); opacity: 0.88; margin: 0 0 22px; }
-.loc { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 28px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 15px; }
+.loc { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 28px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 15px; color: var(--fg); transition: border-color 0.25s, transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1), box-shadow 0.25s; }
+.loc:hover { text-decoration: none; border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 30px -12px var(--glow); }
+.hero .loc { display: flex; width: fit-content; }
 .loc__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--glow); animation: ping 2s infinite; }
 .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
 .stats { display: flex; flex-wrap: wrap; gap: 14px 36px; margin: 0; }
