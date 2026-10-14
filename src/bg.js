@@ -1,10 +1,26 @@
-// Theme backgrounds drawn on one fixed canvas. Everything lives in page coordinates and is drawn
-// shifted by the scroll position, so the background scrolls with the page (no parallax).
+// Theme backgrounds drawn on one fixed canvas. The matrix rain lives in 3 depth layers: each layer
+// scrolls slower than the page (parallax) and can only move so fast, so a quick scroll outruns the
+// rain and the drops glide after it. Stars and the network move with the page.
 
 // Matrix rain. Speed is in glyph rows per second; the trail is the number of rows behind the head;
 // one drop per rowsPerDrop cells of the page.
 // (Max, 2026-10-13: half the earlier speed of 7.5 rows/s, twice the earlier ~4-row trail.)
 export const RAIN = { size: 16, rowsPerSecond: 3.75, trail: 9, rowsPerDrop: 70 };
+// depth: share of the page scroll the layer follows; maxSpeed: px/s it can scroll at most;
+// size, alpha and fall speed shrink with distance. The near layer keeps RAIN's speed and size.
+export const LAYERS = [
+  { depth: 0.3, size: 10, alpha: 0.4, fall: 0.5, maxSpeed: 700 },
+  { depth: 0.55, size: 13, alpha: 0.65, fall: 0.75, maxSpeed: 1100 },
+  { depth: 0.8, size: 16, alpha: 1, fall: 1, maxSpeed: 1600 },
+];
+
+// Moves a layer's scroll offset towards depth × page scroll: eased, and never faster than maxSpeed.
+export function followScroll(offset, scrollY, ms, layer) {
+  const target = scrollY * layer.depth;
+  const eased = (target - offset) * (1 - Math.exp(-ms / 140));
+  const cap = (layer.maxSpeed * ms) / 1000;
+  return offset + Math.max(-cap, Math.min(cap, eased));
+}
 const GLYPHS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789{}[]<>$#=+terraformkubectl'.split('');
 const pick = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
 
@@ -15,8 +31,8 @@ export function newDrop(cols, docRows, rand = Math.random, warm = false) {
   return { col: Math.floor(rand() * cols), start, head: start + (warm ? rand() * RAIN.trail * 2 : 0), glyphs: [] };
 }
 
-export function stepDrop(drop, ms, docRows, cols, rand = Math.random) {
-  drop.head += (ms / 1000) * RAIN.rowsPerSecond;
+export function stepDrop(drop, ms, docRows, cols, rand = Math.random, fall = 1) {
+  drop.head += (ms / 1000) * RAIN.rowsPerSecond * fall;
   if (drop.head - RAIN.trail > docRows) Object.assign(drop, newDrop(cols, docRows, rand), { glyphs: [] });
   return drop;
 }
@@ -53,26 +69,31 @@ export function createBackground(canvas, { root, reduced, css }) {
 
   const scenes = {
     terminal() {
-      const size = RAIN.size;
-      const cols = Math.ceil(innerWidth / size);
-      const docRows = () => Math.ceil(docH / size);
-      const count = () => Math.ceil((cols * docRows()) / RAIN.rowsPerDrop); // about 85 drops on screen
-      const drops = Array.from({ length: count() }, () => newDrop(cols, docRows(), Math.random, true));
       const color = css('--accent');
+      const layers = LAYERS.map((L) => {
+        const cols = Math.ceil(innerWidth / L.size);
+        // A layer only travels depth × the page, so it is that much shorter than the page.
+        const rows = () => Math.ceil(((docH - innerHeight) * L.depth + innerHeight) / L.size);
+        const count = () => Math.ceil((cols * rows()) / RAIN.rowsPerDrop);
+        return { ...L, cols, rows, count, offset: scrollY * L.depth, drops: Array.from({ length: count() }, () => newDrop(cols, rows(), Math.random, true)) };
+      });
       return (dt) => {
-        while (drops.length < count()) drops.push(newDrop(cols, docRows(), Math.random, true));
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, innerWidth, innerHeight);
-        ctx.font = `${size}px "JetBrains Mono", monospace`;
         ctx.textBaseline = 'top';
-        for (const d of drops) {
-          stepDrop(d, dt, docRows(), cols);
-          for (const c of dropCells(d, scrollY, innerHeight, size)) {
-            const i = c.row - d.start;
-            if (!d.glyphs[i] || Math.random() < 0.02) d.glyphs[i] = pick();
-            ctx.globalAlpha = c.alpha;
-            ctx.fillStyle = c.k === 0 ? '#eafff2' : color;
-            ctx.fillText(d.glyphs[i], d.col * size, c.y);
+        for (const L of layers) {
+          while (L.drops.length < L.count()) L.drops.push(newDrop(L.cols, L.rows(), Math.random, true));
+          L.offset = followScroll(L.offset, scrollY, dt, L);
+          ctx.font = `${L.size}px "JetBrains Mono", monospace`;
+          for (const d of L.drops) {
+            stepDrop(d, dt, L.rows(), L.cols, Math.random, L.fall);
+            for (const c of dropCells(d, L.offset, innerHeight, L.size)) {
+              const i = c.row - d.start;
+              if (!d.glyphs[i] || Math.random() < 0.02) d.glyphs[i] = pick();
+              ctx.globalAlpha = c.alpha * L.alpha;
+              ctx.fillStyle = c.k === 0 ? '#eafff2' : color;
+              ctx.fillText(d.glyphs[i], d.col * L.size, c.y);
+            }
           }
         }
         ctx.globalAlpha = 1;

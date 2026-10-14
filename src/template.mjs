@@ -5,6 +5,11 @@ const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;
 export const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ESC[c]);
 const fill = (s, vars) => String(s).replace(/\{(\w+)\}/g, (_, k) => (k in vars ? vars[k] : `{${k}}`));
 
+// The name tears into 3 horizontal slices on a glitch; slices are empty spans that draw the text
+// from data-text, so the heading's text (and SEO) stays the plain name.
+const glitch = (text) =>
+  `<span class="glitch__base">${esc(text)}</span>${[1, 2, 3].map((n) => `<span class="glitch__slice glitch__slice--${n}" data-text="${esc(text)}" aria-hidden="true"></span>`).join('')}`;
+
 const icon = (id, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="/assets/icons.svg#${id}"></use></svg>`;
 
 // A short, stable pseudo commit hash for the career "git log" (decoration only).
@@ -144,12 +149,12 @@ function hero({ config, t, stats }) {
   return `<section class="hero" id="top">
   <div class="hero__text">
     <p class="prompt" dir="ltr"><span class="prompt__user">max@vancouver-island</span>:<span class="prompt__path">~</span>$ <span class="prompt__cmd" data-type="${esc(t.hero.prompt)}">${esc(t.hero.prompt)}</span></p>
-    <h1 class="glitch" data-text="${esc(t.hero.h1)}">${esc(t.hero.h1)}</h1>
+    <h1 class="glitch">${glitch(t.hero.h1)}</h1>
     <p class="roles"><span class="roles__arrow" aria-hidden="true">&gt;</span> <span class="roles__text" data-roles='${esc(JSON.stringify(t.hero.roles))}'>${esc(t.hero.roles[0])}</span><span class="caret" aria-hidden="true"></span></p>
     <p class="lede">${esc(t.hero.lede)}</p>
     <p class="loc">${icon('pin')}<span class="loc__dot" aria-hidden="true"></span>${esc(t.hero.location)}</p>
     <div class="cta">
-      <a class="btn btn--primary" href="#contact">${icon('mail')}${esc(t.hero.ctaPrimary)}</a>
+      <a class="btn btn--primary" href="${config.person.booking}" rel="noopener" target="_blank">${icon('calendar')}${esc(t.hero.ctaPrimary)}</a>
       <a class="btn btn--ghost" href="#shell">${icon('terminal')}${esc(t.hero.ctaSecondary)}</a>
     </div>
     <dl class="stats">
@@ -314,6 +319,7 @@ function shell({ config, t, stats }) {
   const data = {
     years: stats.years,
     email: config.person.email,
+    booking: config.person.booking,
     stack: config.stack,
     certs: config.certifications.map((c) => c.name),
     socials: config.socials.map((s) => [s.label, s.url]),
@@ -352,6 +358,7 @@ function contact({ config, t }) {
   <p class="intro">${esc(t.contact.text)}</p>
   <div class="mailbox">
     <a class="mail" href="mailto:${email}" dir="ltr">${icon('mail')}<span>${email}</span></a>
+    <a class="btn btn--primary" href="${config.person.booking}" rel="noopener" target="_blank">${icon('calendar')}${esc(t.contact.book)}</a>
     <button type="button" class="btn btn--ghost" data-copy="${email}" data-copied="${esc(t.contact.copied)}">${icon('copy')}<span>${esc(t.contact.copy)}</span></button>
   </div>
   <h3 class="sub">${esc(t.contact.socials)}</h3>
@@ -412,7 +419,7 @@ ${head({ ...ctx, title: n.title, description: n.description, canonical: `${confi
 <canvas class="bg" data-bg aria-hidden="true"></canvas>
 <main id="main" class="nf">
   <p class="prompt" dir="ltr"><span class="prompt__user">max@vancouver-island</span>:<span class="prompt__path">~</span>$ terraform plan</p>
-  <h1 class="glitch" data-text="404">${esc(n.h1)}</h1>
+  <h1 class="glitch">${glitch(n.h1)}</h1>
   <p class="lede">${esc(n.text)}</p>
   <a class="btn btn--primary" href="/">${esc(n.back)}</a>
 </main>

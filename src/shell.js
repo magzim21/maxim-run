@@ -25,6 +25,10 @@ export function runCommand(input, data) {
       return out(data.certs.map((c) => `✓ ${c}`).join('\n'));
     case 'travel':
       return out(t.travel);
+    case 'book':
+    case 'call':
+    case 'calendly':
+      return { lines: [{ cls: 'ok', text: t.book }], action: { type: 'open', href: data.booking } };
     case 'contact':
     case 'email':
       return out(t.contact);

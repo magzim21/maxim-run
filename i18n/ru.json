@@ -33,7 +33,7 @@
     ],
     "lede": "Превращаю клики в код. Облака, кластеры и пайплайны, которые собирают себя сами, чтобы люди спокойно релизили и ехали смотреть мир.",
     "location": "Остров Ванкувер, Британская Колумбия, Канада",
-    "ctaPrimary": "Написать мне",
+    "ctaPrimary": "Созвониться на 15 минут",
     "ctaSecondary": "Открыть мой терминал",
     "photoAlt": "Макс Оникс в коричневой куртке смотрит в сторону и улыбается",
     "statYears": "лет в DevOps",
@@ -244,7 +244,7 @@
     "label": "Команда",
     "placeholder": "введите help и нажмите Enter",
     "welcome": "Терминал maxim.run. Введите help, чтобы увидеть команды.",
-    "help": "Команды:\n  whoami        кто такой Макс\n  skills        инструменты\n  certs         сертификации\n  travel        где я был\n  contact       как со мной связаться\n  socials       все ссылки\n  theme <имя>   terminal | nebula | blueprint\n  lang <код>    en | ru | uk | es | zh | he\n  uptime        сколько лет в DevOps\n  sudo hire max попробуйте\n  clear         очистить экран",
+    "help": "Команды:\n  whoami        кто такой Макс\n  skills        инструменты\n  certs         сертификации\n  travel        где я был\n  contact       как со мной связаться\n  book          созвон на 15 минут (Calendly)\n  socials       все ссылки\n  theme <имя>   terminal | nebula | blueprint\n  lang <код>    en | ru | uk | es | zh | he\n  uptime        сколько лет в DevOps\n  sudo hire max попробуйте\n  clear         очистить экран",
     "whoami": "Макс Оникс: DevOps- и платформенный инженер с острова Ванкувер. Всё как код.",
     "travel": "Вокруг света, автостопом по континентам. Видео: youtube.com/@HelloWorldTrip",
     "contact": "Почта: me@maxim.run. Отвечаю в течение дня-двух.",
@@ -258,11 +258,12 @@
     "chips": [
       "help",
       "whoami",
-      "skills",
+      "book",
       "travel",
       "theme nebula",
       "sudo hire max"
-    ]
+    ],
+    "book": "Открываю календарь: выберите свободные 15 минут."
   },
   "contact": {
     "eyebrow": "09 · контакты",
@@ -270,7 +271,8 @@
     "text": "Платформа, спасение Terraform-кода, доклад или история из путешествия — пишите.",
     "copy": "Скопировать почту",
     "copied": "Скопировано",
-    "socials": "Я в других местах"
+    "socials": "Я в других местах",
+    "book": "Записаться на 15-минутный звонок"
   },
   "footer": {
     "built": "Сделано как код: статический HTML генерирует Node, Vercel деплоит из git, DNS описан в Terraform.",

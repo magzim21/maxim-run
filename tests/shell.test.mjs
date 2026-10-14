@@ -8,6 +8,7 @@ const en = JSON.parse(readFileSync('i18n/en.json', 'utf8'));
 const data = {
   years: 7,
   email: 'me@maxim.run',
+  booking: 'https://calendly.com/main-bk7w/15-minute-call',
   stack: ['Terraform', 'Kubernetes'],
   certs: ['CKA'],
   socials: [['GitHub', 'https://github.com/magzim21']],
@@ -47,4 +48,10 @@ test('socials print links, clear clears, unknown commands say so', () => {
   assert.equal(r.lines[0].cls, 'err');
   assert.match(r.lines[0].text, /command not found: rm/);
   assert.deepEqual(runCommand('   ', data).lines, []);
+});
+
+test('book opens the 15-minute Calendly page', () => {
+  for (const cmd of ['book', 'call', 'calendly']) {
+    assert.deepEqual(runCommand(cmd, data).action, { type: 'open', href: 'https://calendly.com/main-bk7w/15-minute-call' });
+  }
 });

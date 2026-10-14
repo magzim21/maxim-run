@@ -374,6 +374,7 @@ if (sh) {
     if (act.type === 'theme') setTheme(act.id);
     if (act.type === 'lang') { store.set('lang', act.code); setTimeout(() => { location.href = `${act.path}#shell`; }, 500); }
     if (act.type === 'mail') setTimeout(() => { location.href = act.href; }, 900);
+    if (act.type === 'open') window.open(act.href, '_blank', 'noopener');
   };
   print('', data.text.welcome);
   form.addEventListener('submit', (e) => {

@@ -193,12 +193,19 @@ h3 { font-size: 20px; }
 .hero h1 { font-size: clamp(54px, 10vw, 118px); font-weight: 800; letter-spacing: -0.045em; margin: 0 0 12px; line-height: 0.95; }
 [data-theme='nebula'] .hero h1 { background: linear-gradient(100deg, #fff 20%, var(--accent) 55%, var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .glitch { position: relative; display: inline-block; }
-.glitch::before, .glitch::after { content: attr(data-text); position: absolute; inset: 0; pointer-events: none; opacity: 0; }
-.glitch::before { color: var(--accent-2); transform: translate(-3px, 0); clip-path: inset(10% 0 60% 0); }
-.glitch::after { color: var(--danger); transform: translate(3px, 0); clip-path: inset(55% 0 20% 0); }
-.glitch.is-glitching::before { opacity: 0.85; animation: glitchA 0.45s steps(2) both; }
-.glitch.is-glitching::after { opacity: 0.85; animation: glitchB 0.45s steps(2) both; }
-[data-theme='nebula'] .glitch::before, [data-theme='nebula'] .glitch::after { -webkit-text-fill-color: currentColor; }
+.glitch__slice { position: absolute; inset: 0; pointer-events: none; visibility: hidden; }
+.glitch__slice::before { content: attr(data-text); }
+.glitch__slice--1 { clip-path: inset(0 0 63% 0); }
+.glitch__slice--2 { clip-path: inset(37% 0 36% 0); }
+.glitch__slice--3 { clip-path: inset(64% 0 0 0); }
+/* On a glitch the plain text hides and its 3 slices take its place, each shoved sideways for a few
+   frames; a 1.5px colour fringe sits on the letter edges only. */
+.glitch.is-glitching .glitch__base { visibility: hidden; }
+.glitch.is-glitching .glitch__slice { visibility: visible; text-shadow: -1.5px 0 color-mix(in srgb, var(--accent-2) 75%, transparent), 1.5px 0 color-mix(in srgb, var(--danger) 75%, transparent); }
+.glitch.is-glitching .glitch__slice--1 { animation: tear1 0.48s steps(1, end) both; }
+.glitch.is-glitching .glitch__slice--2 { animation: tear2 0.48s steps(1, end) both; }
+.glitch.is-glitching .glitch__slice--3 { animation: tear3 0.48s steps(1, end) both; }
+[data-theme='nebula'] .hero .glitch__slice { background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent; }
 .roles { font: 700 clamp(20px, 3vw, 30px)/1.3 var(--display); margin: 0 0 22px; min-height: 1.3em; color: var(--accent); }
 .roles__arrow { color: var(--muted); }
 .caret { display: inline-block; width: 0.55em; height: 1em; margin-inline-start: 4px; vertical-align: -0.12em; background: var(--accent); animation: blink 1s steps(1) infinite; }
@@ -445,8 +452,9 @@ h3 { font-size: 20px; }
 @keyframes rise { from { opacity: 0; transform: translateY(40px) scale(0.98); } to { opacity: 1; transform: none; } }
 @keyframes scan { to { top: 100%; } }
 @keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(12px); opacity: 0; } }
-@keyframes glitchA { 0% { clip-path: inset(10% 0 60% 0); transform: translate(-4px, 0); } 50% { clip-path: inset(40% 0 30% 0); transform: translate(3px, -1px); } 100% { clip-path: inset(70% 0 5% 0); transform: translate(-2px, 1px); } }
-@keyframes glitchB { 0% { clip-path: inset(55% 0 20% 0); transform: translate(4px, 0); } 50% { clip-path: inset(5% 0 75% 0); transform: translate(-3px, 1px); } 100% { clip-path: inset(30% 0 45% 0); transform: translate(2px, -1px); } }
+@keyframes tear1 { 0% { transform: translateX(0); } 12% { transform: translateX(-0.06em); } 30% { transform: translateX(0.03em); } 52% { transform: translateX(-0.02em); } 70% { transform: translateX(0.05em); } 88%, 100% { transform: translateX(0); } }
+@keyframes tear2 { 0% { transform: translateX(0); } 12% { transform: translateX(0.08em); } 30% { transform: translateX(-0.04em); } 52% { transform: translateX(0.01em); } 70% { transform: translateX(-0.07em); } 88%, 100% { transform: translateX(0); } }
+@keyframes tear3 { 0% { transform: translateX(0); } 12% { transform: translateX(-0.03em); } 30% { transform: translateX(0.06em); } 52% { transform: translateX(-0.05em); } 70% { transform: translateX(0.02em); } 88%, 100% { transform: translateX(0); } }
 @keyframes stepOn { 0%, 12% { border-color: var(--accent); color: var(--fg); box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent), 0 0 24px var(--glow); } 25%, 100% { border-color: var(--line); color: var(--muted); box-shadow: none; } }
 @keyframes packet { 0% { inset-inline-start: 8%; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { inset-inline-start: 92%; opacity: 0; } }
 @keyframes packetRtl { 0% { inset-inline-start: 8%; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 1; } 100% { inset-inline-start: 92%; opacity: 0; } }

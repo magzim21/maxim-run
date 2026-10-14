@@ -33,7 +33,7 @@
     ],
     "lede": "Convierto clics en código. Nubes, clústeres y pipelines que se construyen solos, para que la gente publique tranquila y salga a ver el mundo.",
     "location": "Isla de Vancouver, Columbia Británica, Canadá",
-    "ctaPrimary": "Escríbeme",
+    "ctaPrimary": "Reservar llamada de 15 min",
     "ctaSecondary": "Abrir mi terminal",
     "photoAlt": "Max Onyx con una chaqueta marrón, mirando a un lado y sonriendo",
     "statYears": "años en DevOps",
@@ -244,7 +244,7 @@
     "label": "Comando",
     "placeholder": "escribe help y pulsa Enter",
     "welcome": "Terminal de maxim.run. Escribe help para ver los comandos.",
-    "help": "Comandos:\n  whoami        quién es Max\n  skills        las herramientas\n  certs         certificaciones\n  travel        dónde he estado\n  contact       cómo contactarme\n  socials       todos los enlaces\n  theme <nombre> terminal | nebula | blueprint\n  lang <código> en | ru | uk | es | zh | he\n  uptime        años en DevOps\n  sudo hire max pruébalo\n  clear         limpiar la pantalla",
+    "help": "Comandos:\n  whoami        quién es Max\n  skills        las herramientas\n  certs         certificaciones\n  travel        dónde he estado\n  contact       cómo contactarme\n  book          llamada de 15 minutos (Calendly)\n  socials       todos los enlaces\n  theme <nombre> terminal | nebula | blueprint\n  lang <código> en | ru | uk | es | zh | he\n  uptime        años en DevOps\n  sudo hire max pruébalo\n  clear         limpiar la pantalla",
     "whoami": "Max Onyx: ingeniero DevOps y de plataformas en la isla de Vancouver. Todo como código.",
     "travel": "La vuelta al mundo, a dedo por varios continentes. Vídeos: youtube.com/@HelloWorldTrip",
     "contact": "Correo: me@maxim.run. Respondo en uno o dos días.",
@@ -258,11 +258,12 @@
     "chips": [
       "help",
       "whoami",
-      "skills",
+      "book",
       "travel",
       "theme nebula",
       "sudo hire max"
-    ]
+    ],
+    "book": "Abriendo mi calendario: elige 15 minutos libres."
   },
   "contact": {
     "eyebrow": "09 · contacto",
@@ -270,7 +271,8 @@
     "text": "Trabajo de plataforma, rescatar un Terraform, una charla o una historia de viaje: escríbeme.",
     "copy": "Copiar correo",
     "copied": "Copiado",
-    "socials": "Encuéntrame en otros sitios"
+    "socials": "Encuéntrame en otros sitios",
+    "book": "Reservar una llamada de 15 minutos"
   },
   "footer": {
     "built": "Hecho como código: HTML estático generado con Node, desplegado por Vercel desde git, DNS en Terraform.",

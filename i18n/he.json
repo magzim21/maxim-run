@@ -33,7 +33,7 @@
     ],
     "lede": "אני הופך קליקים לקוד. עננים, קלאסטרים ופייפליינים שבונים את עצמם, כדי שאנשים ישחררו גרסאות בשקט וייצאו לראות את העולם.",
     "location": "אי ונקובר, קולומביה הבריטית, קנדה",
-    "ctaPrimary": "כתבו לי",
+    "ctaPrimary": "לקבוע שיחה של 15 דקות",
     "ctaSecondary": "לפתוח את הטרמינל שלי",
     "photoAlt": "מקס אוניקס במעיל חום, מביט הצידה ומחייך",
     "statYears": "שנים ב-DevOps",
@@ -244,7 +244,7 @@
     "label": "פקודה",
     "placeholder": "הקלידו help ולחצו Enter",
     "welcome": "הטרמינל של maxim.run. הקלידו help כדי לראות את הפקודות.",
-    "help": "פקודות:\n  whoami        מי זה מקס\n  skills        ארגז הכלים\n  certs         הסמכות\n  travel        איפה הייתי\n  contact       איך ליצור קשר\n  socials       כל הקישורים\n  theme <שם>    terminal | nebula | blueprint\n  lang <קוד>    en | ru | uk | es | zh | he\n  uptime        כמה שנים ב-DevOps\n  sudo hire max נסו את זה\n  clear         ניקוי המסך",
+    "help": "פקודות:\n  whoami        מי זה מקס\n  skills        ארגז הכלים\n  certs         הסמכות\n  travel        איפה הייתי\n  contact       איך ליצור קשר\n  book          שיחה של 15 דקות (Calendly)\n  socials       כל הקישורים\n  theme <שם>    terminal | nebula | blueprint\n  lang <קוד>    en | ru | uk | es | zh | he\n  uptime        כמה שנים ב-DevOps\n  sudo hire max נסו את זה\n  clear         ניקוי המסך",
     "whoami": "מקס אוניקס: מהנדס DevOps ופלטפורמות מאי ונקובר. הכול כקוד.",
     "travel": "מסביב לעולם, בטרמפים ביבשות שונות. סרטונים: youtube.com/@HelloWorldTrip",
     "contact": "מייל: me@maxim.run. אני עונה תוך יום או יומיים.",
@@ -258,11 +258,12 @@
     "chips": [
       "help",
       "whoami",
-      "skills",
+      "book",
       "travel",
       "theme nebula",
       "sudo hire max"
-    ]
+    ],
+    "book": "פותח את היומן שלי: בחרו 15 דקות פנויות."
   },
   "contact": {
     "eyebrow": "09 · צור קשר",
@@ -270,7 +271,8 @@
     "text": "עבודת פלטפורמה, הצלה של Terraform, הרצאה או סיפור מסע: כתבו לי.",
     "copy": "העתקת המייל",
     "copied": "הועתק",
-    "socials": "אפשר למצוא אותי גם כאן"
+    "socials": "אפשר למצוא אותי גם כאן",
+    "book": "קביעת שיחה של 15 דקות"
   },
   "footer": {
     "built": "נבנה כקוד: HTML סטטי ש-Node מייצר, Vercel פורס מ-git, ‏DNS מנוהל ב-Terraform.",

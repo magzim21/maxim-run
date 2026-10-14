@@ -33,7 +33,7 @@
     ],
     "lede": "我把点击变成代码。云、集群和流水线自己搭建自己，让团队安心发布，然后出门看世界。",
     "location": "加拿大不列颠哥伦比亚省温哥华岛",
-    "ctaPrimary": "联系我",
+    "ctaPrimary": "预约 15 分钟通话",
     "ctaSecondary": "打开我的终端",
     "photoAlt": "Max Onyx 穿着棕色夹克，侧望微笑",
     "statYears": "年 DevOps 经验",
@@ -244,7 +244,7 @@
     "label": "命令",
     "placeholder": "输入 help 然后按回车",
     "welcome": "maxim.run 终端。输入 help 查看命令。",
-    "help": "命令：\n  whoami        Max 是谁\n  skills        工具箱\n  certs         认证\n  travel        去过哪里\n  contact       怎样联系我\n  socials       所有链接\n  theme <名称>  terminal | nebula | blueprint\n  lang <代码>   en | ru | uk | es | zh | he\n  uptime        做 DevOps 多少年\n  sudo hire max 试试看\n  clear         清屏",
+    "help": "命令：\n  whoami        Max 是谁\n  skills        工具箱\n  certs         认证\n  travel        去过哪里\n  contact       怎样联系我\n  book          预约 15 分钟通话（Calendly）\n  socials       所有链接\n  theme <名称>  terminal | nebula | blueprint\n  lang <代码>   en | ru | uk | es | zh | he\n  uptime        做 DevOps 多少年\n  sudo hire max 试试看\n  clear         清屏",
     "whoami": "Max Onyx：住在温哥华岛的 DevOps 与平台工程师。一切皆代码。",
     "travel": "环游世界，搭便车穿越多个大洲。视频：youtube.com/@HelloWorldTrip",
     "contact": "邮箱：me@maxim.run。一般一两天内回复。",
@@ -258,11 +258,12 @@
     "chips": [
       "help",
       "whoami",
-      "skills",
+      "book",
       "travel",
       "theme nebula",
       "sudo hire max"
-    ]
+    ],
+    "book": "正在打开我的日历：挑一个空闲的 15 分钟。"
   },
   "contact": {
     "eyebrow": "09 · 联系",
@@ -270,7 +271,8 @@
     "text": "平台工作、抢救 Terraform 代码、请我演讲，或者想听旅行故事，都欢迎来信。",
     "copy": "复制邮箱",
     "copied": "已复制",
-    "socials": "在其他地方找到我"
+    "socials": "在其他地方找到我",
+    "book": "预约 15 分钟通话"
   },
   "footer": {
     "built": "以代码构建：Node 生成静态 HTML，Vercel 从 git 部署，DNS 由 Terraform 管理。",

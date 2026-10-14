@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { RAIN, dropCells, newDrop, stepDrop } from '../src/bg.js';
+import { LAYERS, RAIN, dropCells, followScroll, newDrop, stepDrop } from '../src/bg.js';
 
 test('rain falls at 3.75 rows per second (half the first speed) with a 9-row trail (twice the first)', () => {
   assert.equal(RAIN.rowsPerSecond, 3.75);
@@ -22,13 +22,34 @@ test('a drop shows its head plus the trail, fading, and nothing above where it s
   assert.equal(dropCells({ col: 0, start: 18, head: 20, glyphs: [] }, 0, 1000).length, 3);
 });
 
-test('drops are fixed to the page: scrolling moves them up by exactly the scrolled distance', () => {
+test('a drop is drawn relative to its layer offset', () => {
   const d = { col: 3, start: 100, head: 110, glyphs: [] };
-  const at0 = dropCells(d, 1600, 900)[0].y;
-  const at1 = dropCells(d, 1700, 900)[0].y;
-  assert.equal(at0 - at1, 100);
-  assert.equal(at0, 110 * RAIN.size - 1600);
+  assert.equal(dropCells(d, 1600, 900)[0].y, 110 * RAIN.size - 1600);
+  assert.equal(dropCells(d, 1600, 900)[0].y - dropCells(d, 1700, 900)[0].y, 100);
   assert.deepEqual(dropCells(d, 0, 900), [], 'a drop below the screen draws nothing');
+});
+
+test('parallax: far layers are smaller, dimmer, slower, and every layer scrolls slower than the page', () => {
+  for (let i = 1; i < LAYERS.length; i++) {
+    assert.ok(LAYERS[i - 1].depth < LAYERS[i].depth && LAYERS[i - 1].size < LAYERS[i].size && LAYERS[i - 1].alpha < LAYERS[i].alpha);
+  }
+  const near = LAYERS.at(-1);
+  assert.ok(near.depth < 1, 'even the near layer is behind the page');
+  assert.equal(near.size, RAIN.size);
+  assert.equal(near.fall, 1);
+  let o = 0;
+  for (let t = 0; t < 5000; t += 16) o = followScroll(o, 1000, 16, near);
+  assert.ok(Math.abs(o - 1000 * near.depth) < 0.5, 'settles at depth × scroll');
+});
+
+test('a fast scroll outruns the rain, which then glides after it', () => {
+  const near = LAYERS.at(-1);
+  const after100ms = followScroll(0, 5000, 100, near);
+  assert.ok(after100ms <= near.maxSpeed * 0.1 + 1e-9, 'capped by maxSpeed');
+  assert.ok(after100ms < 5000 * 0.1, 'the page moved further than the rain');
+  let o = after100ms;
+  for (let t = 0; t < 8000; t += 16) o = followScroll(o, 5000, 16, near);
+  assert.ok(Math.abs(o - 5000 * near.depth) < 0.5, 'caught up afterwards');
 });
 
 test('a drop that left the page starts again somewhere on it', () => {

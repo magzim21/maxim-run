@@ -139,6 +139,7 @@ test('every social link, the email and Vancouver Island are on every page', () =
     const hrefs = [...doc.querySelectorAll('a[href]')].map((a) => a.getAttribute('href'));
     for (const s of config.socials) assert.ok(hrefs.includes(s.url), `${lang.code}: ${s.label} link missing`);
     assert.ok(hrefs.includes(`mailto:${config.person.email}`), `${lang.code}: mailto missing`);
+    assert.ok(hrefs.filter((h) => h === config.person.booking).length >= 2, `${lang.code}: Calendly link missing in hero or contact`);
     assert.ok(!doc.body.innerHTML.includes('gmail.com'), `${lang.code}: a gmail address is published`);
   }
 });
@@ -170,6 +171,19 @@ test('the ring around the portrait links every project and personal account, eac
     for (const a of links) {
       assert.ok(a.querySelector('.sr')?.textContent.trim() || a.querySelector('img')?.alt.trim(), `${lang.code}: ${a.href} has no accessible name`);
       assert.ok(a.dataset.tip?.trim(), `${lang.code}: ${a.href} has no hover description`);
+    }
+  }
+});
+
+test('the glitching name keeps a plain heading: slices are empty and hidden from screen readers', () => {
+  for (const { doc, lang } of pages) {
+    const h1 = doc.querySelector('h1');
+    const slices = h1.querySelectorAll('.glitch__slice');
+    assert.equal(slices.length, 3);
+    for (const s of slices) {
+      assert.equal(s.textContent, '', `${lang.code}: a slice carries text`);
+      assert.equal(s.getAttribute('aria-hidden'), 'true');
+      assert.equal(s.dataset.text, h1.textContent);
     }
   }
 });
