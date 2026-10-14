@@ -13,13 +13,24 @@
     "contact": "Contact",
     "theme": "Theme",
     "language": "Language",
-    "themes": { "terminal": "Terminal", "nebula": "Nebula", "blueprint": "Blueprint" },
+    "themes": {
+      "terminal": "Terminal",
+      "nebula": "Nebula",
+      "blueprint": "Blueprint"
+    },
     "menu": "Menu"
   },
   "hero": {
     "prompt": "whoami",
     "h1": "Max Onyx",
-    "roles": ["DevOps engineer", "platform architect", "automation addict", "round-the-world traveller", "photographer", "storyteller"],
+    "roles": [
+      "DevOps engineer",
+      "platform architect",
+      "automation addict",
+      "round-the-world traveller",
+      "photographer",
+      "storyteller"
+    ],
     "lede": "I turn clicks into code. Clouds, clusters and pipelines that build themselves, so people can ship and go see the world.",
     "location": "Vancouver Island, BC, Canada",
     "ctaPrimary": "Get in touch",
@@ -42,18 +53,58 @@
     "eyebrow": "02 · automation",
     "title": "I automate everything. Then I automate the automation.",
     "intro": "A change I make travels the same road every time: commit, test, plan, apply, deploy, observe. No console clicks, no snowflake servers, no \"it works on my laptop\".",
-    "steps": ["commit", "test", "plan", "apply", "deploy", "observe"],
-    "stepHints": ["git push to a protected branch", "lint, unit and end-to-end tests", "terraform plan, reviewed like code", "applied by CI through OIDC, no keys", "GitOps: ArgoCD or Vercel ships it", "Datadog dashboards, alerts and RUM"],
+    "steps": [
+      "commit",
+      "test",
+      "plan",
+      "apply",
+      "deploy",
+      "observe"
+    ],
+    "stepHints": [
+      "git push to a protected branch",
+      "lint, unit and end-to-end tests",
+      "terraform plan, reviewed like code",
+      "applied by CI through OIDC, no keys",
+      "GitOps: ArgoCD or Vercel ships it",
+      "Datadog dashboards, alerts and RUM"
+    ],
     "toggleManual": "ClickOps",
     "toggleAuto": "Everything as code",
-    "manualLines": ["open the cloud console", "click 47 buttons", "forget which ones", "copy settings to staging by hand", "drift appears", "nobody knows why prod is different"],
-    "autoLines": ["terraform plan", "review the diff in a pull request", "CI applies it with short-lived credentials", "staging and prod come from one module", "drift check runs every week", "rollback = git revert"],
+    "manualLines": [
+      "open the cloud console",
+      "click 47 buttons",
+      "forget which ones",
+      "copy settings to staging by hand",
+      "drift appears",
+      "nobody knows why prod is different"
+    ],
+    "autoLines": [
+      "terraform plan",
+      "review the diff in a pull request",
+      "CI applies it with short-lived credentials",
+      "staging and prod come from one module",
+      "drift check runs every week",
+      "rollback = git revert"
+    ],
     "resultsTitle": "Results from real projects",
     "results": [
-      { "value": "3 mo → 1 day", "label": "lead time for a new QA environment after I automated the bootstrap pipeline" },
-      { "value": "4 clusters", "label": "Kubernetes upgraded 1.21 → 1.27 in one month, CRD migrations included" },
-      { "value": "~2 months", "label": "to refactor an inherited, undocumented codebase into a multi-region architecture" },
-      { "value": "20+ services", "label": "moved onto one consistent CI/CD pattern with build-once, deploy-many releases" }
+      {
+        "value": "3 mo → 1 day",
+        "label": "lead time for a new QA environment after I automated the bootstrap pipeline"
+      },
+      {
+        "value": "4 clusters",
+        "label": "Kubernetes upgraded 1.21 → 1.27 in one month, CRD migrations included"
+      },
+      {
+        "value": "~2 months",
+        "label": "to refactor an inherited, undocumented codebase into a multi-region architecture"
+      },
+      {
+        "value": "20+ services",
+        "label": "moved onto one consistent CI/CD pattern with build-once, deploy-many releases"
+      }
     ]
   },
   "stack": {
@@ -71,12 +122,48 @@
     "eyebrow": "05 · career",
     "title": "Where I've shipped",
     "items": [
-      { "years": "2024", "role": "Senior DevOps Engineer (embedded)", "org": "Mimecast", "text": "Built a greenfield platform after the acquisition: Terraform, EKS with GitOps through ArgoCD, secure CI/CD, on-call and incident response." },
-      { "years": "2022 – 2023", "role": "DevOps Engineer, the only one", "org": "Elevate Security", "text": "Owned AWS, Terraform and Terragrunt, Kubernetes and monitoring end to end; delivered multi-region; the startup was acquired by Mimecast." },
-      { "years": "2021 – 2022", "role": "DevOps Engineer", "org": "SHALB", "text": "A new client and a new toolset every three months: AWS and on-prem, greenfield and legacy." },
-      { "years": "2020 – 2022", "role": "Senior Automation Engineer", "org": "Illumin", "text": "A private cloud of about 400 bare-metal and virtual hosts in three regions; PXE provisioning, Terraform on vSphere, Kubernetes with Ansible." },
-      { "years": "2020", "role": "Ops / DevOps Engineer", "org": "Ministry of Finance of Ukraine", "text": "Rebuilt monitoring and logging for a fraud-detection platform in a locked-down network; promoted after one month." },
-      { "years": "2018 – 2019", "role": "Web, SEO and support engineer", "org": "Darwin Global Partners · AM-BITS", "text": "Where it started: LAMP sites and technical SEO, then on-call L1–L3 support for big-data platforms." }
+      {
+        "years": "2026",
+        "role": "Micro-business entrepreneur",
+        "org": "My own small businesses",
+        "text": "Since March 2026 I launch and run my own small businesses, automated the same way I build platforms: sites, bookings and ads as code."
+      },
+      {
+        "years": "2024 – 2026",
+        "role": "Senior DevOps Engineer (embedded)",
+        "org": "Mimecast",
+        "text": "Built a greenfield platform after the acquisition: Terraform, EKS with GitOps through ArgoCD, secure CI/CD, on-call and incident response."
+      },
+      {
+        "years": "2022 – 2023",
+        "role": "DevOps Engineer, the only one",
+        "org": "Elevate Security",
+        "text": "Owned AWS, Terraform and Terragrunt, Kubernetes and monitoring end to end; delivered multi-region; the startup was acquired by Mimecast."
+      },
+      {
+        "years": "2021 – 2022",
+        "role": "DevOps Engineer",
+        "org": "SHALB",
+        "text": "A new client and a new toolset every three months: AWS and on-prem, greenfield and legacy."
+      },
+      {
+        "years": "2020 – 2022",
+        "role": "Senior Automation Engineer",
+        "org": "Illumin",
+        "text": "A private cloud of about 400 bare-metal and virtual hosts in three regions; PXE provisioning, Terraform on vSphere, Kubernetes with Ansible."
+      },
+      {
+        "years": "2020",
+        "role": "Ops / DevOps Engineer",
+        "org": "Ministry of Finance of Ukraine",
+        "text": "Rebuilt monitoring and logging for a fraud-detection platform in a locked-down network; promoted after one month."
+      },
+      {
+        "years": "2018 – 2019",
+        "role": "Web, SEO and support engineer",
+        "org": "Darwin Global Partners · AM-BITS",
+        "text": "Where it started: LAMP sites and technical SEO, then on-call L1–L3 support for big-data platforms."
+      }
     ]
   },
   "talents": {
@@ -84,14 +171,46 @@
     "title": "More than one terminal open",
     "intro": "Engineering is my bread. These are the rest of the sandwich.",
     "items": [
-      { "icon": "globe", "title": "Round-the-world traveller", "text": "I have circled the globe and hitchhiked across continents. For me the whole planet is home." },
-      { "icon": "camera", "title": "Photographer", "text": "Former professional action and event photographer: fast light, fast decisions." },
-      { "icon": "play", "title": "YouTuber", "text": "A travel channel, Hello World Trip, with about 5,000 subscribers, plus a channel about tech." },
-      { "icon": "mic", "title": "Speaker", "text": "Gave a live talk at the CNCF Vancouver meetup." },
-      { "icon": "pen", "title": "Writer", "text": "Articles on Medium about DevOps, tools and getting things done." },
-      { "icon": "brush", "title": "Artist in training", "text": "Private art classes: composition and colour help with dashboards too." },
-      { "icon": "spark", "title": "Full-stack with AI", "text": "Personal full-stack products, built with AI pair programming and shipped as code." },
-      { "icon": "sun", "title": "5 am club", "text": "Gym, books on engineering, business and philosophy, before the world wakes up." }
+      {
+        "icon": "globe",
+        "title": "Round-the-world traveller",
+        "text": "I have circled the globe and hitchhiked across continents. For me the whole planet is home."
+      },
+      {
+        "icon": "camera",
+        "title": "Photographer",
+        "text": "Former professional action and event photographer: fast light, fast decisions."
+      },
+      {
+        "icon": "play",
+        "title": "YouTuber",
+        "text": "A travel channel, Hello World Trip, with about 5,000 subscribers, plus a channel about tech."
+      },
+      {
+        "icon": "mic",
+        "title": "Speaker",
+        "text": "Gave a live talk at the CNCF Vancouver meetup."
+      },
+      {
+        "icon": "pen",
+        "title": "Writer",
+        "text": "Articles on Medium about DevOps, tools and getting things done."
+      },
+      {
+        "icon": "brush",
+        "title": "Artist in training",
+        "text": "Private art classes: composition and colour help with dashboards too."
+      },
+      {
+        "icon": "spark",
+        "title": "Full-stack with AI",
+        "text": "Personal full-stack products, built with AI pair programming and shipped as code."
+      },
+      {
+        "icon": "sun",
+        "title": "5 am club",
+        "text": "Gym, books on engineering, business and philosophy, before the world wakes up."
+      }
     ]
   },
   "travel": {
@@ -103,9 +222,18 @@
     "drag": "drag to spin the globe",
     "youtube": "Watch Hello World Trip",
     "facts": [
-      { "k": "mode", "v": "hitchhiking, mostly" },
-      { "k": "loop", "v": "a full circle around the planet" },
-      { "k": "base", "v": "Vancouver Island, British Columbia" }
+      {
+        "k": "mode",
+        "v": "hitchhiking, mostly"
+      },
+      {
+        "k": "loop",
+        "v": "a full circle around the planet"
+      },
+      {
+        "k": "base",
+        "v": "Vancouver Island, British Columbia"
+      }
     ]
   },
   "shell": {
@@ -126,7 +254,14 @@
     "langSwitch": "Switching language…",
     "langUnknown": "Unknown language. Try: en, ru, uk, es, zh, he.",
     "notFound": "command not found: {cmd}. Type help.",
-    "chips": ["help", "whoami", "skills", "travel", "theme nebula", "sudo hire max"]
+    "chips": [
+      "help",
+      "whoami",
+      "skills",
+      "travel",
+      "theme nebula",
+      "sudo hire max"
+    ]
   },
   "contact": {
     "eyebrow": "09 · contact",

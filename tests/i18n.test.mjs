@@ -43,3 +43,10 @@ test('pages in other languages are not English copies', () => {
     assert.notEqual(i18n[code].shell.help, i18n.en.shell.help, `${code}: shell.help is English`);
   }
 });
+
+test('the career log is newest first in every language', () => {
+  for (const [code, t] of Object.entries(load())) {
+    const starts = t.career.items.map((it) => Number(it.years.match(/\d{4}/)[0]));
+    assert.deepEqual(starts, [...starts].sort((a, b) => b - a), `${code}: career years ${starts}`);
+  }
+});

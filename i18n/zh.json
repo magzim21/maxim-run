@@ -13,13 +13,24 @@
     "contact": "联系",
     "theme": "主题",
     "language": "语言",
-    "themes": { "terminal": "终端", "nebula": "星云", "blueprint": "蓝图" },
+    "themes": {
+      "terminal": "终端",
+      "nebula": "星云",
+      "blueprint": "蓝图"
+    },
     "menu": "菜单"
   },
   "hero": {
     "prompt": "whoami",
     "h1": "Max Onyx",
-    "roles": ["DevOps 工程师", "平台架构师", "自动化狂热者", "环球旅行者", "摄影师", "讲故事的人"],
+    "roles": [
+      "DevOps 工程师",
+      "平台架构师",
+      "自动化狂热者",
+      "环球旅行者",
+      "摄影师",
+      "讲故事的人"
+    ],
     "lede": "我把点击变成代码。云、集群和流水线自己搭建自己，让团队安心发布，然后出门看世界。",
     "location": "加拿大不列颠哥伦比亚省温哥华岛",
     "ctaPrimary": "联系我",
@@ -42,18 +53,58 @@
     "eyebrow": "02 · 自动化",
     "title": "我把一切自动化，然后再把自动化本身自动化。",
     "intro": "我做的每个改动都走同一条路：提交、测试、计划、应用、部署、观测。不在控制台里点按钮，没有“雪花”服务器，也没有“在我电脑上能跑”。",
-    "steps": ["commit", "test", "plan", "apply", "deploy", "observe"],
-    "stepHints": ["git push 到受保护分支", "代码检查、单元测试和端到端测试", "terraform plan，像代码一样评审", "CI 通过 OIDC 应用，不用密钥", "GitOps：由 ArgoCD 或 Vercel 发布", "Datadog 仪表盘、告警和 RUM"],
+    "steps": [
+      "commit",
+      "test",
+      "plan",
+      "apply",
+      "deploy",
+      "observe"
+    ],
+    "stepHints": [
+      "git push 到受保护分支",
+      "代码检查、单元测试和端到端测试",
+      "terraform plan，像代码一样评审",
+      "CI 通过 OIDC 应用，不用密钥",
+      "GitOps：由 ArgoCD 或 Vercel 发布",
+      "Datadog 仪表盘、告警和 RUM"
+    ],
     "toggleManual": "ClickOps",
     "toggleAuto": "一切皆代码",
-    "manualLines": ["打开云控制台", "点 47 个按钮", "忘了点的是哪些", "手动把配置抄到 staging", "配置开始漂移", "没人知道生产环境为什么不一样"],
-    "autoLines": ["terraform plan", "在 pull request 里评审 diff", "CI 用短期凭证自动应用", "staging 和 prod 出自同一个模块", "每周自动检查漂移", "回滚 = git revert"],
+    "manualLines": [
+      "打开云控制台",
+      "点 47 个按钮",
+      "忘了点的是哪些",
+      "手动把配置抄到 staging",
+      "配置开始漂移",
+      "没人知道生产环境为什么不一样"
+    ],
+    "autoLines": [
+      "terraform plan",
+      "在 pull request 里评审 diff",
+      "CI 用短期凭证自动应用",
+      "staging 和 prod 出自同一个模块",
+      "每周自动检查漂移",
+      "回滚 = git revert"
+    ],
     "resultsTitle": "真实项目的成果",
     "results": [
-      { "value": "3 个月 → 1 天", "label": "我把环境初始化流水线自动化之后，新 QA 环境的交付时间" },
-      { "value": "4 个集群", "label": "一个月内把 Kubernetes 从 1.21 升级到 1.27，包括 CRD 迁移" },
-      { "value": "约 2 个月", "label": "把接手的、没有文档的代码库重构为多区域架构" },
-      { "value": "20+ 个服务", "label": "统一到同一套 CI/CD 模式：构建一次，多次部署" }
+      {
+        "value": "3 个月 → 1 天",
+        "label": "我把环境初始化流水线自动化之后，新 QA 环境的交付时间"
+      },
+      {
+        "value": "4 个集群",
+        "label": "一个月内把 Kubernetes 从 1.21 升级到 1.27，包括 CRD 迁移"
+      },
+      {
+        "value": "约 2 个月",
+        "label": "把接手的、没有文档的代码库重构为多区域架构"
+      },
+      {
+        "value": "20+ 个服务",
+        "label": "统一到同一套 CI/CD 模式：构建一次，多次部署"
+      }
     ]
   },
   "stack": {
@@ -71,12 +122,48 @@
     "eyebrow": "05 · 经历",
     "title": "我交付过的地方",
     "items": [
-      { "years": "2024", "role": "高级 DevOps 工程师（嵌入产品团队）", "org": "Mimecast", "text": "收购后从零搭建新平台：Terraform、通过 ArgoCD 实现 GitOps 的 EKS、安全的 CI/CD、值班与故障响应。" },
-      { "years": "2022 – 2023", "role": "DevOps 工程师（公司唯一一位）", "org": "Elevate Security", "text": "端到端负责 AWS、Terraform 与 Terragrunt、Kubernetes 和监控；完成多区域部署；这家初创公司后来被 Mimecast 收购。" },
-      { "years": "2021 – 2022", "role": "DevOps 工程师", "org": "SHALB", "text": "每三个月换一个新客户、一套新工具：AWS 与自有机房，新项目与遗留系统。" },
-      { "years": "2020 – 2022", "role": "高级自动化工程师", "org": "Illumin", "text": "约 400 台物理机和虚拟机组成的私有云，分布在三个区域；PXE 装机、vSphere 上的 Terraform、用 Ansible 部署 Kubernetes。" },
-      { "years": "2020", "role": "运维 / DevOps 工程师", "org": "乌克兰财政部", "text": "在封闭网络中为反欺诈平台重建监控和日志；入职一个月后获得晋升。" },
-      { "years": "2018 – 2019", "role": "网站、SEO 与技术支持工程师", "org": "Darwin Global Partners · AM-BITS", "text": "一切的起点：LAMP 网站和技术 SEO，之后为大数据平台做 L1–L3 值班支持。" }
+      {
+        "years": "2026",
+        "role": "小微企业创业者",
+        "org": "自己的小生意",
+        "text": "自 2026 年 3 月起，我创办并经营自己的小生意，并像搭建平台一样把它们自动化：网站、预约和广告都写成代码。"
+      },
+      {
+        "years": "2024 – 2026",
+        "role": "高级 DevOps 工程师（嵌入产品团队）",
+        "org": "Mimecast",
+        "text": "收购后从零搭建新平台：Terraform、通过 ArgoCD 实现 GitOps 的 EKS、安全的 CI/CD、值班与故障响应。"
+      },
+      {
+        "years": "2022 – 2023",
+        "role": "DevOps 工程师（公司唯一一位）",
+        "org": "Elevate Security",
+        "text": "端到端负责 AWS、Terraform 与 Terragrunt、Kubernetes 和监控；完成多区域部署；这家初创公司后来被 Mimecast 收购。"
+      },
+      {
+        "years": "2021 – 2022",
+        "role": "DevOps 工程师",
+        "org": "SHALB",
+        "text": "每三个月换一个新客户、一套新工具：AWS 与自有机房，新项目与遗留系统。"
+      },
+      {
+        "years": "2020 – 2022",
+        "role": "高级自动化工程师",
+        "org": "Illumin",
+        "text": "约 400 台物理机和虚拟机组成的私有云，分布在三个区域；PXE 装机、vSphere 上的 Terraform、用 Ansible 部署 Kubernetes。"
+      },
+      {
+        "years": "2020",
+        "role": "运维 / DevOps 工程师",
+        "org": "乌克兰财政部",
+        "text": "在封闭网络中为反欺诈平台重建监控和日志；入职一个月后获得晋升。"
+      },
+      {
+        "years": "2018 – 2019",
+        "role": "网站、SEO 与技术支持工程师",
+        "org": "Darwin Global Partners · AM-BITS",
+        "text": "一切的起点：LAMP 网站和技术 SEO，之后为大数据平台做 L1–L3 值班支持。"
+      }
     ]
   },
   "talents": {
@@ -84,14 +171,46 @@
     "title": "不止一个终端开着",
     "intro": "工程是我的面包，下面是三明治里的其他料。",
     "items": [
-      { "icon": "globe", "title": "环球旅行者", "text": "我环游过地球，也搭便车穿越过多个大洲。对我来说，整个星球都是家。" },
-      { "icon": "camera", "title": "摄影师", "text": "曾是职业运动与活动摄影师：光线快，决定也要快。" },
-      { "icon": "play", "title": "YouTuber", "text": "旅行频道 Hello World Trip，约 5000 位订阅者，另外还有一个科技频道。" },
-      { "icon": "mic", "title": "演讲者", "text": "曾在 CNCF Vancouver 线下聚会上做过现场分享。" },
-      { "icon": "pen", "title": "作者", "text": "在 Medium 上写 DevOps、工具和如何把事情做完。" },
-      { "icon": "brush", "title": "学画的人", "text": "上私人美术课：构图和色彩在做仪表盘时也用得上。" },
-      { "icon": "spark", "title": "借助 AI 的全栈开发", "text": "与 AI 结对编程完成的个人全栈产品，同样以代码方式发布。" },
-      { "icon": "sun", "title": "早上 5 点俱乐部", "text": "在世界醒来之前健身，读工程、商业和哲学方面的书。" }
+      {
+        "icon": "globe",
+        "title": "环球旅行者",
+        "text": "我环游过地球，也搭便车穿越过多个大洲。对我来说，整个星球都是家。"
+      },
+      {
+        "icon": "camera",
+        "title": "摄影师",
+        "text": "曾是职业运动与活动摄影师：光线快，决定也要快。"
+      },
+      {
+        "icon": "play",
+        "title": "YouTuber",
+        "text": "旅行频道 Hello World Trip，约 5000 位订阅者，另外还有一个科技频道。"
+      },
+      {
+        "icon": "mic",
+        "title": "演讲者",
+        "text": "曾在 CNCF Vancouver 线下聚会上做过现场分享。"
+      },
+      {
+        "icon": "pen",
+        "title": "作者",
+        "text": "在 Medium 上写 DevOps、工具和如何把事情做完。"
+      },
+      {
+        "icon": "brush",
+        "title": "学画的人",
+        "text": "上私人美术课：构图和色彩在做仪表盘时也用得上。"
+      },
+      {
+        "icon": "spark",
+        "title": "借助 AI 的全栈开发",
+        "text": "与 AI 结对编程完成的个人全栈产品，同样以代码方式发布。"
+      },
+      {
+        "icon": "sun",
+        "title": "早上 5 点俱乐部",
+        "text": "在世界醒来之前健身，读工程、商业和哲学方面的书。"
+      }
     ]
   },
   "travel": {
@@ -103,9 +222,18 @@
     "drag": "拖动以旋转地球",
     "youtube": "观看 Hello World Trip",
     "facts": [
-      { "k": "mode", "v": "大多靠搭便车" },
-      { "k": "loop", "v": "绕地球完整一圈" },
-      { "k": "base", "v": "不列颠哥伦比亚省温哥华岛" }
+      {
+        "k": "mode",
+        "v": "大多靠搭便车"
+      },
+      {
+        "k": "loop",
+        "v": "绕地球完整一圈"
+      },
+      {
+        "k": "base",
+        "v": "不列颠哥伦比亚省温哥华岛"
+      }
     ]
   },
   "shell": {
@@ -126,7 +254,14 @@
     "langSwitch": "正在切换语言…",
     "langUnknown": "没有这种语言。可选：en、ru、uk、es、zh、he。",
     "notFound": "找不到命令：{cmd}。输入 help。",
-    "chips": ["help", "whoami", "skills", "travel", "theme nebula", "sudo hire max"]
+    "chips": [
+      "help",
+      "whoami",
+      "skills",
+      "travel",
+      "theme nebula",
+      "sudo hire max"
+    ]
   },
   "contact": {
     "eyebrow": "09 · 联系",

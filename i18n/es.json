@@ -13,13 +13,24 @@
     "contact": "Contacto",
     "theme": "Tema",
     "language": "Idioma",
-    "themes": { "terminal": "Terminal", "nebula": "Nebulosa", "blueprint": "Plano" },
+    "themes": {
+      "terminal": "Terminal",
+      "nebula": "Nebulosa",
+      "blueprint": "Plano"
+    },
     "menu": "Menú"
   },
   "hero": {
     "prompt": "whoami",
     "h1": "Max Onyx",
-    "roles": ["ingeniero DevOps", "arquitecto de plataformas", "adicto a la automatización", "viajero alrededor del mundo", "fotógrafo", "narrador"],
+    "roles": [
+      "ingeniero DevOps",
+      "arquitecto de plataformas",
+      "adicto a la automatización",
+      "viajero alrededor del mundo",
+      "fotógrafo",
+      "narrador"
+    ],
     "lede": "Convierto clics en código. Nubes, clústeres y pipelines que se construyen solos, para que la gente publique tranquila y salga a ver el mundo.",
     "location": "Isla de Vancouver, Columbia Británica, Canadá",
     "ctaPrimary": "Escríbeme",
@@ -42,18 +53,58 @@
     "eyebrow": "02 · automatización",
     "title": "Lo automatizo todo. Después automatizo la automatización.",
     "intro": "Cada cambio que hago recorre siempre el mismo camino: commit, tests, plan, apply, despliegue y observación. Sin clics en la consola, sin servidores copo de nieve y sin «en mi portátil funciona».",
-    "steps": ["commit", "test", "plan", "apply", "deploy", "observe"],
-    "stepHints": ["git push a una rama protegida", "linters, tests unitarios y end-to-end", "terraform plan, revisado como código", "lo aplica la CI vía OIDC, sin claves", "GitOps: lo publica ArgoCD o Vercel", "dashboards, alertas y RUM en Datadog"],
+    "steps": [
+      "commit",
+      "test",
+      "plan",
+      "apply",
+      "deploy",
+      "observe"
+    ],
+    "stepHints": [
+      "git push a una rama protegida",
+      "linters, tests unitarios y end-to-end",
+      "terraform plan, revisado como código",
+      "lo aplica la CI vía OIDC, sin claves",
+      "GitOps: lo publica ArgoCD o Vercel",
+      "dashboards, alertas y RUM en Datadog"
+    ],
     "toggleManual": "ClickOps",
     "toggleAuto": "Todo como código",
-    "manualLines": ["abrir la consola de la nube", "pulsar 47 botones", "olvidar cuáles", "copiar la config a staging a mano", "aparece la deriva", "nadie sabe por qué producción es distinta"],
-    "autoLines": ["terraform plan", "revisar el diff en un pull request", "la CI lo aplica con credenciales efímeras", "staging y prod salen del mismo módulo", "detección de deriva cada semana", "rollback = git revert"],
+    "manualLines": [
+      "abrir la consola de la nube",
+      "pulsar 47 botones",
+      "olvidar cuáles",
+      "copiar la config a staging a mano",
+      "aparece la deriva",
+      "nadie sabe por qué producción es distinta"
+    ],
+    "autoLines": [
+      "terraform plan",
+      "revisar el diff en un pull request",
+      "la CI lo aplica con credenciales efímeras",
+      "staging y prod salen del mismo módulo",
+      "detección de deriva cada semana",
+      "rollback = git revert"
+    ],
     "resultsTitle": "Resultados de proyectos reales",
     "results": [
-      { "value": "3 meses → 1 día", "label": "para tener un nuevo entorno de QA después de automatizar el pipeline de arranque" },
-      { "value": "4 clústeres", "label": "de Kubernetes actualizados de 1.21 a 1.27 en un mes, con migraciones de CRD" },
-      { "value": "~2 meses", "label": "para convertir un código heredado y sin documentar en una arquitectura multirregión" },
-      { "value": "20+ servicios", "label": "llevados a un mismo patrón de CI/CD: compilar una vez, desplegar muchas" }
+      {
+        "value": "3 meses → 1 día",
+        "label": "para tener un nuevo entorno de QA después de automatizar el pipeline de arranque"
+      },
+      {
+        "value": "4 clústeres",
+        "label": "de Kubernetes actualizados de 1.21 a 1.27 en un mes, con migraciones de CRD"
+      },
+      {
+        "value": "~2 meses",
+        "label": "para convertir un código heredado y sin documentar en una arquitectura multirregión"
+      },
+      {
+        "value": "20+ servicios",
+        "label": "llevados a un mismo patrón de CI/CD: compilar una vez, desplegar muchas"
+      }
     ]
   },
   "stack": {
@@ -71,12 +122,48 @@
     "eyebrow": "05 · trayectoria",
     "title": "Dónde he llevado cosas a producción",
     "items": [
-      { "years": "2024", "role": "Senior DevOps Engineer (integrado en el equipo)", "org": "Mimecast", "text": "Construí una plataforma desde cero tras la adquisición: Terraform, EKS con GitOps vía ArgoCD, CI/CD seguro, guardias y respuesta a incidentes." },
-      { "years": "2022 – 2023", "role": "Ingeniero DevOps, el único", "org": "Elevate Security", "text": "Responsable de AWS, Terraform y Terragrunt, Kubernetes y monitorización de punta a punta; entregué multirregión; Mimecast compró la startup." },
-      { "years": "2021 – 2022", "role": "Ingeniero DevOps", "org": "SHALB", "text": "Un cliente nuevo y un conjunto de herramientas nuevo cada tres meses: AWS y servidores propios, proyectos nuevos y legado." },
-      { "years": "2020 – 2022", "role": "Senior Automation Engineer", "org": "Illumin", "text": "Una nube privada de unos 400 servidores físicos y virtuales en tres regiones; aprovisionamiento PXE, Terraform sobre vSphere, Kubernetes con Ansible." },
-      { "years": "2020", "role": "Ingeniero Ops / DevOps", "org": "Ministerio de Finanzas de Ucrania", "text": "Rehíce la monitorización y los logs de una plataforma de detección de fraude en una red cerrada; me ascendieron al mes." },
-      { "years": "2018 – 2019", "role": "Ingeniero web, SEO y soporte", "org": "Darwin Global Partners · AM-BITS", "text": "Donde empezó todo: sitios LAMP y SEO técnico, luego soporte de guardia L1–L3 para plataformas de big data." }
+      {
+        "years": "2026",
+        "role": "Emprendedor de microempresas",
+        "org": "Mis propios pequeños negocios",
+        "text": "Desde marzo de 2026 lanzo y llevo mis propios pequeños negocios, automatizados igual que una plataforma: webs, reservas y anuncios como código."
+      },
+      {
+        "years": "2024 – 2026",
+        "role": "Senior DevOps Engineer (integrado en el equipo)",
+        "org": "Mimecast",
+        "text": "Construí una plataforma desde cero tras la adquisición: Terraform, EKS con GitOps vía ArgoCD, CI/CD seguro, guardias y respuesta a incidentes."
+      },
+      {
+        "years": "2022 – 2023",
+        "role": "Ingeniero DevOps, el único",
+        "org": "Elevate Security",
+        "text": "Responsable de AWS, Terraform y Terragrunt, Kubernetes y monitorización de punta a punta; entregué multirregión; Mimecast compró la startup."
+      },
+      {
+        "years": "2021 – 2022",
+        "role": "Ingeniero DevOps",
+        "org": "SHALB",
+        "text": "Un cliente nuevo y un conjunto de herramientas nuevo cada tres meses: AWS y servidores propios, proyectos nuevos y legado."
+      },
+      {
+        "years": "2020 – 2022",
+        "role": "Senior Automation Engineer",
+        "org": "Illumin",
+        "text": "Una nube privada de unos 400 servidores físicos y virtuales en tres regiones; aprovisionamiento PXE, Terraform sobre vSphere, Kubernetes con Ansible."
+      },
+      {
+        "years": "2020",
+        "role": "Ingeniero Ops / DevOps",
+        "org": "Ministerio de Finanzas de Ucrania",
+        "text": "Rehíce la monitorización y los logs de una plataforma de detección de fraude en una red cerrada; me ascendieron al mes."
+      },
+      {
+        "years": "2018 – 2019",
+        "role": "Ingeniero web, SEO y soporte",
+        "org": "Darwin Global Partners · AM-BITS",
+        "text": "Donde empezó todo: sitios LAMP y SEO técnico, luego soporte de guardia L1–L3 para plataformas de big data."
+      }
     ]
   },
   "talents": {
@@ -84,14 +171,46 @@
     "title": "Más de una terminal abierta",
     "intro": "La ingeniería es mi pan. Esto es el resto del bocadillo.",
     "items": [
-      { "icon": "globe", "title": "Viajero alrededor del mundo", "text": "He dado la vuelta al mundo y he hecho autostop por varios continentes. Para mí, todo el planeta es casa." },
-      { "icon": "camera", "title": "Fotógrafo", "text": "Fui fotógrafo profesional de acción y eventos: luz rápida, decisiones rápidas." },
-      { "icon": "play", "title": "YouTuber", "text": "Un canal de viajes, Hello World Trip, con unos 5000 suscriptores, y otro canal sobre tecnología." },
-      { "icon": "mic", "title": "Ponente", "text": "Di una charla en directo en el meetup CNCF Vancouver." },
-      { "icon": "pen", "title": "Escritor", "text": "Artículos en Medium sobre DevOps, herramientas y cómo terminar las cosas." },
-      { "icon": "brush", "title": "Aprendiz de artista", "text": "Clases privadas de arte: la composición y el color también ayudan en los dashboards." },
-      { "icon": "spark", "title": "Full-stack con IA", "text": "Productos full-stack personales, hechos programando en pareja con IA y desplegados como código." },
-      { "icon": "sun", "title": "Club de las 5 am", "text": "Gimnasio y libros de ingeniería, negocio y filosofía antes de que el mundo despierte." }
+      {
+        "icon": "globe",
+        "title": "Viajero alrededor del mundo",
+        "text": "He dado la vuelta al mundo y he hecho autostop por varios continentes. Para mí, todo el planeta es casa."
+      },
+      {
+        "icon": "camera",
+        "title": "Fotógrafo",
+        "text": "Fui fotógrafo profesional de acción y eventos: luz rápida, decisiones rápidas."
+      },
+      {
+        "icon": "play",
+        "title": "YouTuber",
+        "text": "Un canal de viajes, Hello World Trip, con unos 5000 suscriptores, y otro canal sobre tecnología."
+      },
+      {
+        "icon": "mic",
+        "title": "Ponente",
+        "text": "Di una charla en directo en el meetup CNCF Vancouver."
+      },
+      {
+        "icon": "pen",
+        "title": "Escritor",
+        "text": "Artículos en Medium sobre DevOps, herramientas y cómo terminar las cosas."
+      },
+      {
+        "icon": "brush",
+        "title": "Aprendiz de artista",
+        "text": "Clases privadas de arte: la composición y el color también ayudan en los dashboards."
+      },
+      {
+        "icon": "spark",
+        "title": "Full-stack con IA",
+        "text": "Productos full-stack personales, hechos programando en pareja con IA y desplegados como código."
+      },
+      {
+        "icon": "sun",
+        "title": "Club de las 5 am",
+        "text": "Gimnasio y libros de ingeniería, negocio y filosofía antes de que el mundo despierte."
+      }
     ]
   },
   "travel": {
@@ -103,9 +222,18 @@
     "drag": "arrastra para girar el globo",
     "youtube": "Ver Hello World Trip",
     "facts": [
-      { "k": "mode", "v": "sobre todo a dedo" },
-      { "k": "loop", "v": "una vuelta completa al planeta" },
-      { "k": "base", "v": "isla de Vancouver, Columbia Británica" }
+      {
+        "k": "mode",
+        "v": "sobre todo a dedo"
+      },
+      {
+        "k": "loop",
+        "v": "una vuelta completa al planeta"
+      },
+      {
+        "k": "base",
+        "v": "isla de Vancouver, Columbia Británica"
+      }
     ]
   },
   "shell": {
@@ -126,7 +254,14 @@
     "langSwitch": "Cambiando de idioma…",
     "langUnknown": "Ese idioma no existe. Prueba: en, ru, uk, es, zh, he.",
     "notFound": "comando no encontrado: {cmd}. Escribe help.",
-    "chips": ["help", "whoami", "skills", "travel", "theme nebula", "sudo hire max"]
+    "chips": [
+      "help",
+      "whoami",
+      "skills",
+      "travel",
+      "theme nebula",
+      "sudo hire max"
+    ]
   },
   "contact": {
     "eyebrow": "09 · contacto",
