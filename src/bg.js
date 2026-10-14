@@ -9,8 +9,8 @@ export const RAIN = { size: 16, rowsPerSecond: 3.75, trail: 9 };
 // size, alpha and fall speed shrink with distance; perScreen: drops in one screen height of the layer. Two layers only: the large bright front layer
 // made the first screen look cluttered (Max, 2026-10-14).
 export const LAYERS = [
-  { depth: 0.3, size: 10, alpha: 0.4, fall: 0.5, maxSpeed: 700, perScreen: 25 },
-  { depth: 0.55, size: 13, alpha: 0.65, fall: 0.75, maxSpeed: 1100, perScreen: 35 },
+  { depth: 0.3, size: 10, alpha: 0.4, fall: 0.5, maxSpeed: 700, perScreen: 55 },
+  { depth: 0.55, size: 13, alpha: 0.65, fall: 0.75, maxSpeed: 1100, perScreen: 75 },
 ];
 
 // Moves a layer's scroll offset towards depth × page scroll: eased, and never faster than maxSpeed.
@@ -23,16 +23,23 @@ export function followScroll(offset, scrollY, ms, layer) {
 const GLYPHS = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789{}[]<>$#=+terraformkubectl'.split('');
 const pick = () => GLYPHS[(Math.random() * GLYPHS.length) | 0];
 
-// A drop starts at row `start` and falls; its head is at row `head` (fractional). A warm drop is
-// already part-way down its trail, so the page is full of rain from the first frame.
+// A drop starts at row `start`, falls a random distance (`travel` rows) and then starts again at a
+// random place. Starts are spread over the page (and a travel length above it), so every part of the
+// page gets rain at the same rate, however long the page has been open (Max, 2026-10-14: the rain
+// thinned out at the top after scrolling, when drops only restarted after reaching the bottom).
+export const TRAVEL = { min: 15, max: 50 };
+
 export function newDrop(cols, docRows, rand = Math.random, warm = false) {
-  const start = Math.floor(rand() * docRows);
-  return { col: Math.floor(rand() * cols), start, head: start + (warm ? rand() * RAIN.trail * 2 : 0), glyphs: [] };
+  const travel = TRAVEL.min + rand() * (TRAVEL.max - TRAVEL.min);
+  const start = Math.floor(rand() * (docRows + TRAVEL.max)) - TRAVEL.max;
+  return { col: Math.floor(rand() * cols), start, travel, head: start + (warm ? rand() * travel : 0), glyphs: [] };
 }
 
 export function stepDrop(drop, ms, docRows, cols, rand = Math.random, fall = 1) {
   drop.head += (ms / 1000) * RAIN.rowsPerSecond * fall;
-  if (drop.head - RAIN.trail > docRows) Object.assign(drop, newDrop(cols, docRows, rand), { glyphs: [] });
+  if (drop.head - RAIN.trail > drop.start + drop.travel || drop.head - RAIN.trail > docRows) {
+    Object.assign(drop, newDrop(cols, docRows, rand), { glyphs: [] });
+  }
   return drop;
 }
 
