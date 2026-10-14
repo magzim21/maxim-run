@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Max Onyx — DevOps engineer who automates everything",
+    "description": "Max Onyx: DevOps and platform engineer on Vancouver Island, Canada. Everything as code, 9 certifications, round-the-world traveller.",
+    "ogAlt": "Max Onyx, DevOps engineer, smiling in a brown jacket"
+  },
+  "skip": "Skip to content",
+  "nav": {
+    "about": "About",
+    "automation": "Automation",
+    "talents": "Talents",
+    "travel": "Travel",
+    "contact": "Contact",
+    "theme": "Theme",
+    "language": "Language",
+    "themes": { "terminal": "Terminal", "nebula": "Nebula", "blueprint": "Blueprint" },
+    "menu": "Menu"
+  },
+  "hero": {
+    "prompt": "whoami",
+    "h1": "Max Onyx",
+    "roles": ["DevOps engineer", "platform architect", "automation addict", "round-the-world traveller", "photographer", "storyteller"],
+    "lede": "I turn clicks into code. Clouds, clusters and pipelines that build themselves, so people can ship and go see the world.",
+    "location": "Vancouver Island, BC, Canada",
+    "ctaPrimary": "Get in touch",
+    "ctaSecondary": "Open my shell",
+    "photoAlt": "Max Onyx in a brown jacket, looking to the side and smiling",
+    "statYears": "years in DevOps",
+    "statCerts": "certifications",
+    "statLaps": "lap around the planet",
+    "scroll": "scroll"
+  },
+  "about": {
+    "eyebrow": "01 · about",
+    "title": "If your DevOps creates infrastructure by clicking, you do not have a DevOps engineer.",
+    "p1": "I'm Max: a DevOps and platform engineer who believes everything that has an API should be configured as code. Since 2019 I have built and run clouds, Kubernetes clusters and delivery pipelines for startups, enterprises, an ad-tech private cloud of about 400 hosts and a government fraud-detection platform.",
+    "p2": "Most of my employers were outsourcing companies, so I learned to land in an unfamiliar system, read it like an X-ray and make it boring: simple, documented, reproducible. My test for every decision is one question: how will this feel to maintain in two years?",
+    "p3": "These days I also use AI-assisted coding to go end to end: from the Terraform module to the frontend that sits on top of it.",
+    "codeComment": "my operating principles"
+  },
+  "automation": {
+    "eyebrow": "02 · automation",
+    "title": "I automate everything. Then I automate the automation.",
+    "intro": "A change I make travels the same road every time: commit, test, plan, apply, deploy, observe. No console clicks, no snowflake servers, no \"it works on my laptop\".",
+    "steps": ["commit", "test", "plan", "apply", "deploy", "observe"],
+    "stepHints": ["git push to a protected branch", "lint, unit and end-to-end tests", "terraform plan, reviewed like code", "applied by CI through OIDC, no keys", "GitOps: ArgoCD or Vercel ships it", "Datadog dashboards, alerts and RUM"],
+    "toggleManual": "ClickOps",
+    "toggleAuto": "Everything as code",
+    "manualLines": ["open the cloud console", "click 47 buttons", "forget which ones", "copy settings to staging by hand", "drift appears", "nobody knows why prod is different"],
+    "autoLines": ["terraform plan", "review the diff in a pull request", "CI applies it with short-lived credentials", "staging and prod come from one module", "drift check runs every week", "rollback = git revert"],
+    "resultsTitle": "Results from real projects",
+    "results": [
+      { "value": "3 mo → 1 day", "label": "lead time for a new QA environment after I automated the bootstrap pipeline" },
+      { "value": "4 clusters", "label": "Kubernetes upgraded 1.21 → 1.27 in one month, CRD migrations included" },
+      { "value": "~2 months", "label": "to refactor an inherited, undocumented codebase into a multi-region architecture" },
+      { "value": "20+ services", "label": "moved onto one consistent CI/CD pattern with build-once, deploy-many releases" }
+    ]
+  },
+  "stack": {
+    "eyebrow": "03 · toolbox",
+    "title": "The stack I reach for",
+    "intro": "Battle-tested, boring in the best way, and easy to hire for."
+  },
+  "certs": {
+    "eyebrow": "04 · certified",
+    "title": "Nine certifications, one habit: learn it properly",
+    "intro": "Five AWS badges, both Kubernetes exams (CKA and CKS), Terraform and Cisco networking.",
+    "cta": "Verify on Credly"
+  },
+  "career": {
+    "eyebrow": "05 · career",
+    "title": "Where I've shipped",
+    "items": [
+      { "years": "2024", "role": "Senior DevOps Engineer (embedded)", "org": "Mimecast", "text": "Built a greenfield platform after the acquisition: Terraform, EKS with GitOps through ArgoCD, secure CI/CD, on-call and incident response." },
+      { "years": "2022 – 2023", "role": "DevOps Engineer, the only one", "org": "Elevate Security", "text": "Owned AWS, Terraform and Terragrunt, Kubernetes and monitoring end to end; delivered multi-region; the startup was acquired by Mimecast." },
+      { "years": "2021 – 2022", "role": "DevOps Engineer", "org": "SHALB", "text": "A new client and a new toolset every three months: AWS and on-prem, greenfield and legacy." },
+      { "years": "2020 – 2022", "role": "Senior Automation Engineer", "org": "Illumin", "text": "A private cloud of about 400 bare-metal and virtual hosts in three regions; PXE provisioning, Terraform on vSphere, Kubernetes with Ansible." },
+      { "years": "2020", "role": "Ops / DevOps Engineer", "org": "Ministry of Finance of Ukraine", "text": "Rebuilt monitoring and logging for a fraud-detection platform in a locked-down network; promoted after one month." },
+      { "years": "2018 – 2019", "role": "Web, SEO and support engineer", "org": "Darwin Global Partners · AM-BITS", "text": "Where it started: LAMP sites and technical SEO, then on-call L1–L3 support for big-data platforms." }
+    ]
+  },
+  "talents": {
+    "eyebrow": "06 · talents",
+    "title": "More than one terminal open",
+    "intro": "Engineering is my bread. These are the rest of the sandwich.",
+    "items": [
+      { "icon": "globe", "title": "Round-the-world traveller", "text": "I have circled the globe and hitchhiked across continents. For me the whole planet is home." },
+      { "icon": "camera", "title": "Photographer", "text": "Former professional action and event photographer: fast light, fast decisions." },
+      { "icon": "play", "title": "YouTuber", "text": "A travel channel, Hello World Trip, with about 5,000 subscribers, plus a channel about tech." },
+      { "icon": "mic", "title": "Speaker", "text": "Gave a live talk at the CNCF Vancouver meetup." },
+      { "icon": "pen", "title": "Writer", "text": "Articles on Medium about DevOps, tools and getting things done." },
+      { "icon": "brush", "title": "Artist in training", "text": "Private art classes: composition and colour help with dashboards too." },
+      { "icon": "spark", "title": "Full-stack with AI", "text": "Personal full-stack products, built with AI pair programming and shipped as code." },
+      { "icon": "sun", "title": "5 am club", "text": "Gym, books on engineering, business and philosophy, before the world wakes up." }
+    ]
+  },
+  "travel": {
+    "eyebrow": "07 · travel",
+    "title": "Around the world, mostly on my thumb",
+    "intro": "I have travelled around the globe and hitchhiked across continents, filming it for my YouTube channel. Today home base is Vancouver Island, between the Pacific and the rainforest.",
+    "home": "Home: Vancouver Island",
+    "route": "Round-the-world route",
+    "drag": "drag to spin the globe",
+    "youtube": "Watch Hello World Trip",
+    "facts": [
+      { "k": "mode", "v": "hitchhiking, mostly" },
+      { "k": "loop", "v": "a full circle around the planet" },
+      { "k": "base", "v": "Vancouver Island, British Columbia" }
+    ]
+  },
+  "shell": {
+    "eyebrow": "08 · shell",
+    "title": "Talk to my shell",
+    "intro": "Type a command or tap one below. Try help.",
+    "label": "Command",
+    "placeholder": "type help and press Enter",
+    "welcome": "maxim.run shell. Type help to list commands.",
+    "help": "Commands:\n  whoami        who is Max\n  skills        the toolbox\n  certs         certifications\n  travel        where I have been\n  contact       how to reach me\n  socials       all links\n  theme <name>  terminal | nebula | blueprint\n  lang <code>   en | ru | uk | es | zh | he\n  uptime        years in DevOps\n  sudo hire max try it\n  clear         clear the screen",
+    "whoami": "Max Onyx: DevOps and platform engineer on Vancouver Island. Everything as code.",
+    "travel": "Round the world, hitchhiked across continents. Videos: youtube.com/@HelloWorldTrip",
+    "contact": "Email: me@maxim.run. I answer within a day or two.",
+    "uptime": "up {years} years in DevOps, load average: high, mood: automated",
+    "hire": "[sudo] password for recruiter: ********\nAccess granted. Opening the email draft to me@maxim.run…",
+    "themeSet": "Theme set to {name}.",
+    "themeUnknown": "Unknown theme. Try: terminal, nebula, blueprint.",
+    "langSwitch": "Switching language…",
+    "langUnknown": "Unknown language. Try: en, ru, uk, es, zh, he.",
+    "notFound": "command not found: {cmd}. Type help.",
+    "chips": ["help", "whoami", "skills", "travel", "theme nebula", "sudo hire max"]
+  },
+  "contact": {
+    "eyebrow": "09 · contact",
+    "title": "Let's build something that runs itself",
+    "text": "Platform work, a Terraform rescue, a talk, or a travel story: write to me.",
+    "copy": "Copy email",
+    "copied": "Copied",
+    "socials": "Find me elsewhere"
+  },
+  "footer": {
+    "built": "Built as code: static HTML generated by Node, deployed by Vercel from git, DNS by Terraform.",
+    "source": "Source on GitHub",
+    "version": "build",
+    "top": "Back to top"
+  },
+  "notFound": {
+    "title": "404 — page not found · Max Onyx",
+    "description": "This page does not exist on maxim.run. Go back to Max Onyx's home page: DevOps, automation and travel.",
+    "h1": "404: this path is not in the plan",
+    "text": "terraform plan found no resource at this address.",
+    "back": "Go home"
+  }
+}

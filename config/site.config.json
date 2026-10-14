@@ -1,0 +1,58 @@
+{
+  "_comment": "The one source of truth for facts on the site. Build, tests and JSON-LD read it; copy lives in i18n/<lang>.json.",
+  "schemaVersion": 1,
+  "domain": "maxim.run",
+  "origin": "https://maxim.run",
+  "repo": "https://github.com/magzim21/maxim-run",
+  "person": {
+    "name": "Max Onyx",
+    "alternateName": "Maksym Onyshchenko",
+    "jobTitle": "DevOps / Platform Engineer",
+    "email": "me@maxim.run",
+    "devopsSinceYear": 2019,
+    "image": "/img/max-onyx-720.webp",
+    "location": {
+      "region": "Vancouver Island",
+      "province": "BC",
+      "country": "CA",
+      "lat": 48.4284,
+      "lon": -123.3656
+    },
+    "knowsAbout": ["Terraform", "Kubernetes", "AWS", "GitOps", "ArgoCD", "CI/CD", "Datadog", "Linux", "Networking", "Automation"]
+  },
+  "socials": [
+    { "id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/maxim-onyshchenko/", "handle": "maxim-onyshchenko" },
+    { "id": "github", "label": "GitHub", "url": "https://github.com/magzim21", "handle": "magzim21" },
+    { "id": "youtube", "label": "YouTube", "url": "https://www.youtube.com/@HelloWorldTrip", "handle": "@HelloWorldTrip" },
+    { "id": "instagram", "label": "Instagram", "url": "https://www.instagram.com/maksim_onyshchenko/", "handle": "maksim_onyshchenko" },
+    { "id": "telegram", "label": "Telegram", "url": "https://t.me/usryname", "handle": "@usryname" },
+    { "id": "medium", "label": "Medium", "url": "https://medium.com/@maximonyshchenko", "handle": "@maximonyshchenko" },
+    { "id": "credly", "label": "Credly", "url": "https://www.credly.com/users/maksym-onyshchenko/badges", "handle": "maksym-onyshchenko" }
+  ],
+  "certifications": [
+    { "id": "aws-sa-pro", "name": "AWS Certified Solutions Architect – Professional", "year": 2022, "img": "/img/certs/aws-sa-professional.webp" },
+    { "id": "aws-devops-pro", "name": "AWS Certified DevOps Engineer – Professional", "year": 2022, "img": "/img/certs/aws-devops.webp" },
+    { "id": "aws-ans", "name": "AWS Certified Advanced Networking – Specialty", "year": 2024, "img": "/img/certs/aws-networking.webp" },
+    { "id": "aws-sysops", "name": "AWS Certified SysOps Administrator – Associate", "year": 2022, "img": "/img/certs/aws-sysops.webp" },
+    { "id": "aws-sa", "name": "AWS Certified Solutions Architect – Associate", "year": 2021, "img": "/img/certs/aws-sa.webp" },
+    { "id": "cka", "name": "Certified Kubernetes Administrator (CKA)", "year": 2020, "img": "/img/certs/cka.webp" },
+    { "id": "cks", "name": "Certified Kubernetes Security Specialist (CKS)", "year": 2022, "img": "/img/certs/kubernetes-security-specialist-logo2.webp" },
+    { "id": "terraform", "name": "HashiCorp Certified: Terraform Associate", "year": 2021, "img": "/img/certs/terraform.webp" },
+    { "id": "ccna", "name": "Cisco CCNA: Enterprise Networking, Security and Automation", "year": 2020, "img": "/img/certs/ccna-2.webp" }
+  ],
+  "stack": ["Terraform", "Terragrunt", "AWS", "Kubernetes", "EKS", "Helm", "ArgoCD", "GitHub Actions", "Jenkins", "CircleCI", "GitLab CI", "Datadog", "Prometheus", "Grafana", "Ansible", "Packer", "Vault", "Docker", "Linux", "Python", "Node.js", "Bash", "Route 53", "Vercel"],
+  "languages": [
+    { "code": "en", "path": "/", "label": "English", "short": "EN", "dir": "ltr", "ogLocale": "en_US" },
+    { "code": "ru", "path": "/ru/", "label": "Русский", "short": "RU", "dir": "ltr", "ogLocale": "ru_RU" },
+    { "code": "uk", "path": "/uk/", "label": "Українська", "short": "UA", "dir": "ltr", "ogLocale": "uk_UA" },
+    { "code": "es", "path": "/es/", "label": "Español", "short": "ES", "dir": "ltr", "ogLocale": "es_ES" },
+    { "code": "zh", "path": "/zh/", "label": "中文", "short": "中文", "dir": "ltr", "ogLocale": "zh_CN" },
+    { "code": "he", "path": "/he/", "label": "עברית", "short": "HE", "dir": "rtl", "ogLocale": "he_IL" }
+  ],
+  "themes": [
+    { "id": "terminal", "color": "#04110b" },
+    { "id": "nebula", "color": "#0d0820" },
+    { "id": "blueprint", "color": "#f3f6fb" }
+  ],
+  "defaultTheme": "terminal"
+}

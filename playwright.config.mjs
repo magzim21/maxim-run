@@ -1,0 +1,15 @@
+// End-to-end tests in a phone viewport against the built site (scripts/serve.mjs).
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: 'e2e',
+  timeout: 30_000,
+  retries: process.env.CI ? 1 : 0,
+  reporter: process.env.CI ? 'github' : 'list',
+  use: { baseURL: 'http://127.0.0.1:4321', trace: 'retain-on-failure' },
+  projects: [
+    { name: 'phone', use: { ...devices['iPhone 13'], browserName: 'chromium' } },
+    { name: 'desktop', use: { viewport: { width: 1366, height: 860 } } },
+  ],
+  webServer: { command: 'node scripts/serve.mjs 4321', url: 'http://127.0.0.1:4321/', reuseExistingServer: !process.env.CI },
+});

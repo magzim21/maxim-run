@@ -1,0 +1,25 @@
+{
+  "name": "maxim-run",
+  "private": true,
+  "type": "module",
+  "description": "Max Onyx's personal site on maxim.run",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "test": "node scripts/build.mjs && node --test tests/*.test.mjs",
+    "test:e2e": "node scripts/build.mjs && playwright test"
+  },
+  "devDependencies": {
+    "@fontsource/inter": "5.2.5",
+    "@fontsource/jetbrains-mono": "5.2.5",
+    "@playwright/test": "^1.63.0",
+    "esbuild": "0.25.10",
+    "jsdom": "26.1.0",
+    "simple-icons": "^15.10.0",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}

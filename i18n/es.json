@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "title": "Max Onyx — ingeniero DevOps que lo automatiza todo",
+    "description": "Max Onyx: ingeniero DevOps y de plataformas en la isla de Vancouver, Canadá. Todo como código, 9 certificaciones y una vuelta al mundo.",
+    "ogAlt": "Max Onyx, ingeniero DevOps, sonriendo con una chaqueta marrón"
+  },
+  "skip": "Saltar al contenido",
+  "nav": {
+    "about": "Sobre mí",
+    "automation": "Automatización",
+    "talents": "Talentos",
+    "travel": "Viajes",
+    "contact": "Contacto",
+    "theme": "Tema",
+    "language": "Idioma",
+    "themes": { "terminal": "Terminal", "nebula": "Nebulosa", "blueprint": "Plano" },
+    "menu": "Menú"
+  },
+  "hero": {
+    "prompt": "whoami",
+    "h1": "Max Onyx",
+    "roles": ["ingeniero DevOps", "arquitecto de plataformas", "adicto a la automatización", "viajero alrededor del mundo", "fotógrafo", "narrador"],
+    "lede": "Convierto clics en código. Nubes, clústeres y pipelines que se construyen solos, para que la gente publique tranquila y salga a ver el mundo.",
+    "location": "Isla de Vancouver, Columbia Británica, Canadá",
+    "ctaPrimary": "Escríbeme",
+    "ctaSecondary": "Abrir mi terminal",
+    "photoAlt": "Max Onyx con una chaqueta marrón, mirando a un lado y sonriendo",
+    "statYears": "años en DevOps",
+    "statCerts": "certificaciones",
+    "statLaps": "vuelta al planeta",
+    "scroll": "baja"
+  },
+  "about": {
+    "eyebrow": "01 · sobre mí",
+    "title": "Si tu DevOps crea la infraestructura a base de clics, no tienes un ingeniero DevOps.",
+    "p1": "Soy Max, ingeniero DevOps y de plataformas. Todo lo que tiene una API debería configurarse como código. Desde 2019 construyo y opero nubes, clústeres de Kubernetes y pipelines de entrega para startups, grandes empresas, una nube privada de ad-tech de unos 400 servidores y una plataforma pública de detección de fraude.",
+    "p2": "La mayoría de mis empleadores eran empresas de outsourcing, así que aprendí a aterrizar en sistemas desconocidos, leerlos como una radiografía y volverlos aburridos: simples, documentados, reproducibles. Cada decisión pasa por una pregunta: ¿cómo será mantener esto dentro de dos años?",
+    "p3": "Hoy también programo con ayuda de IA para llegar de punta a punta: del módulo de Terraform al frontend que corre encima.",
+    "codeComment": "mis principios de trabajo"
+  },
+  "automation": {
+    "eyebrow": "02 · automatización",
+    "title": "Lo automatizo todo. Después automatizo la automatización.",
+    "intro": "Cada cambio que hago recorre siempre el mismo camino: commit, tests, plan, apply, despliegue y observación. Sin clics en la consola, sin servidores copo de nieve y sin «en mi portátil funciona».",
+    "steps": ["commit", "test", "plan", "apply", "deploy", "observe"],
+    "stepHints": ["git push a una rama protegida", "linters, tests unitarios y end-to-end", "terraform plan, revisado como código", "lo aplica la CI vía OIDC, sin claves", "GitOps: lo publica ArgoCD o Vercel", "dashboards, alertas y RUM en Datadog"],
+    "toggleManual": "ClickOps",
+    "toggleAuto": "Todo como código",
+    "manualLines": ["abrir la consola de la nube", "pulsar 47 botones", "olvidar cuáles", "copiar la config a staging a mano", "aparece la deriva", "nadie sabe por qué producción es distinta"],
+    "autoLines": ["terraform plan", "revisar el diff en un pull request", "la CI lo aplica con credenciales efímeras", "staging y prod salen del mismo módulo", "detección de deriva cada semana", "rollback = git revert"],
+    "resultsTitle": "Resultados de proyectos reales",
+    "results": [
+      { "value": "3 meses → 1 día", "label": "para tener un nuevo entorno de QA después de automatizar el pipeline de arranque" },
+      { "value": "4 clústeres", "label": "de Kubernetes actualizados de 1.21 a 1.27 en un mes, con migraciones de CRD" },
+      { "value": "~2 meses", "label": "para convertir un código heredado y sin documentar en una arquitectura multirregión" },
+      { "value": "20+ servicios", "label": "llevados a un mismo patrón de CI/CD: compilar una vez, desplegar muchas" }
+    ]
+  },
+  "stack": {
+    "eyebrow": "03 · herramientas",
+    "title": "El stack al que recurro",
+    "intro": "Probado en batalla, aburrido en el mejor sentido y fácil de contratar."
+  },
+  "certs": {
+    "eyebrow": "04 · certificado",
+    "title": "Nueve certificaciones, un hábito: aprenderlo bien",
+    "intro": "Cinco insignias de AWS, los dos exámenes de Kubernetes (CKA y CKS), Terraform y redes de Cisco.",
+    "cta": "Verificar en Credly"
+  },
+  "career": {
+    "eyebrow": "05 · trayectoria",
+    "title": "Dónde he llevado cosas a producción",
+    "items": [
+      { "years": "2024", "role": "Senior DevOps Engineer (integrado en el equipo)", "org": "Mimecast", "text": "Construí una plataforma desde cero tras la adquisición: Terraform, EKS con GitOps vía ArgoCD, CI/CD seguro, guardias y respuesta a incidentes." },
+      { "years": "2022 – 2023", "role": "Ingeniero DevOps, el único", "org": "Elevate Security", "text": "Responsable de AWS, Terraform y Terragrunt, Kubernetes y monitorización de punta a punta; entregué multirregión; Mimecast compró la startup." },
+      { "years": "2021 – 2022", "role": "Ingeniero DevOps", "org": "SHALB", "text": "Un cliente nuevo y un conjunto de herramientas nuevo cada tres meses: AWS y servidores propios, proyectos nuevos y legado." },
+      { "years": "2020 – 2022", "role": "Senior Automation Engineer", "org": "Illumin", "text": "Una nube privada de unos 400 servidores físicos y virtuales en tres regiones; aprovisionamiento PXE, Terraform sobre vSphere, Kubernetes con Ansible." },
+      { "years": "2020", "role": "Ingeniero Ops / DevOps", "org": "Ministerio de Finanzas de Ucrania", "text": "Rehíce la monitorización y los logs de una plataforma de detección de fraude en una red cerrada; me ascendieron al mes." },
+      { "years": "2018 – 2019", "role": "Ingeniero web, SEO y soporte", "org": "Darwin Global Partners · AM-BITS", "text": "Donde empezó todo: sitios LAMP y SEO técnico, luego soporte de guardia L1–L3 para plataformas de big data." }
+    ]
+  },
+  "talents": {
+    "eyebrow": "06 · talentos",
+    "title": "Más de una terminal abierta",
+    "intro": "La ingeniería es mi pan. Esto es el resto del bocadillo.",
+    "items": [
+      { "icon": "globe", "title": "Viajero alrededor del mundo", "text": "He dado la vuelta al mundo y he hecho autostop por varios continentes. Para mí, todo el planeta es casa." },
+      { "icon": "camera", "title": "Fotógrafo", "text": "Fui fotógrafo profesional de acción y eventos: luz rápida, decisiones rápidas." },
+      { "icon": "play", "title": "YouTuber", "text": "Un canal de viajes, Hello World Trip, con unos 5000 suscriptores, y otro canal sobre tecnología." },
+      { "icon": "mic", "title": "Ponente", "text": "Di una charla en directo en el meetup CNCF Vancouver." },
+      { "icon": "pen", "title": "Escritor", "text": "Artículos en Medium sobre DevOps, herramientas y cómo terminar las cosas." },
+      { "icon": "brush", "title": "Aprendiz de artista", "text": "Clases privadas de arte: la composición y el color también ayudan en los dashboards." },
+      { "icon": "spark", "title": "Full-stack con IA", "text": "Productos full-stack personales, hechos programando en pareja con IA y desplegados como código." },
+      { "icon": "sun", "title": "Club de las 5 am", "text": "Gimnasio y libros de ingeniería, negocio y filosofía antes de que el mundo despierte." }
+    ]
+  },
+  "travel": {
+    "eyebrow": "07 · viajes",
+    "title": "La vuelta al mundo, casi siempre a dedo",
+    "intro": "He dado la vuelta al globo y he hecho autostop por varios continentes, grabándolo para mi canal de YouTube. Hoy mi base es la isla de Vancouver, entre el Pacífico y el bosque lluvioso.",
+    "home": "Casa: isla de Vancouver",
+    "route": "Ruta de la vuelta al mundo",
+    "drag": "arrastra para girar el globo",
+    "youtube": "Ver Hello World Trip",
+    "facts": [
+      { "k": "mode", "v": "sobre todo a dedo" },
+      { "k": "loop", "v": "una vuelta completa al planeta" },
+      { "k": "base", "v": "isla de Vancouver, Columbia Británica" }
+    ]
+  },
+  "shell": {
+    "eyebrow": "08 · terminal",
+    "title": "Habla con mi terminal",
+    "intro": "Escribe un comando o pulsa uno de abajo. Prueba con help.",
+    "label": "Comando",
+    "placeholder": "escribe help y pulsa Enter",
+    "welcome": "Terminal de maxim.run. Escribe help para ver los comandos.",
+    "help": "Comandos:\n  whoami        quién es Max\n  skills        las herramientas\n  certs         certificaciones\n  travel        dónde he estado\n  contact       cómo contactarme\n  socials       todos los enlaces\n  theme <nombre> terminal | nebula | blueprint\n  lang <código> en | ru | uk | es | zh | he\n  uptime        años en DevOps\n  sudo hire max pruébalo\n  clear         limpiar la pantalla",
+    "whoami": "Max Onyx: ingeniero DevOps y de plataformas en la isla de Vancouver. Todo como código.",
+    "travel": "La vuelta al mundo, a dedo por varios continentes. Vídeos: youtube.com/@HelloWorldTrip",
+    "contact": "Correo: me@maxim.run. Respondo en uno o dos días.",
+    "uptime": "{years} años en DevOps, carga media: alta, ánimo: automatizado",
+    "hire": "[sudo] contraseña para reclutador: ********\nAcceso concedido. Abriendo un correo a me@maxim.run…",
+    "themeSet": "Tema cambiado a {name}.",
+    "themeUnknown": "Ese tema no existe. Prueba: terminal, nebula, blueprint.",
+    "langSwitch": "Cambiando de idioma…",
+    "langUnknown": "Ese idioma no existe. Prueba: en, ru, uk, es, zh, he.",
+    "notFound": "comando no encontrado: {cmd}. Escribe help.",
+    "chips": ["help", "whoami", "skills", "travel", "theme nebula", "sudo hire max"]
+  },
+  "contact": {
+    "eyebrow": "09 · contacto",
+    "title": "Construyamos algo que funcione solo",
+    "text": "Trabajo de plataforma, rescatar un Terraform, una charla o una historia de viaje: escríbeme.",
+    "copy": "Copiar correo",
+    "copied": "Copiado",
+    "socials": "Encuéntrame en otros sitios"
+  },
+  "footer": {
+    "built": "Hecho como código: HTML estático generado con Node, desplegado por Vercel desde git, DNS en Terraform.",
+    "source": "Código en GitHub",
+    "version": "build",
+    "top": "Volver arriba"
+  },
+  "notFound": {
+    "title": "404 — página no encontrada · Max Onyx",
+    "description": "Esta página no existe en maxim.run. Vuelve a la portada de Max Onyx: DevOps, automatización y viajes.",
+    "h1": "404: esta ruta no está en el plan",
+    "text": "terraform plan no encontró ningún recurso en esta dirección.",
+    "back": "Ir al inicio"
+  }
+}
