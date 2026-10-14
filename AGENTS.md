@@ -9,6 +9,8 @@ Project facts and rules for agents. Read before changing anything.
 - Facts come from Max's own Notion pages ("Max website", "Resume - DevOps, Platform, SRE, Cloud Engineer") and
   his answers on 2026-10-13. Do not invent numbers (countries visited, subscribers, years): the countries list
   waits on the Notion task "Send the list of countries visited for the maxim.run travel map".
+- Projects in the hero ring (config `projects`): CodeLaw (codelaw.pro), Lead Pancakes (leadpancakes.com), media archive
+  (media-archive.codelaw.pro). Max asked for them on 2026-10-13; name no other business without his word.
 - The travel globe draws an illustrative great-circle loop through Vancouver Island, not a real route log.
 - No trackers, analytics or third-party scripts. Adding any (Datadog RUM, Google tag, pixels) first needs the
   consent banner and privacy page from the global "Consent for tracking" rules.

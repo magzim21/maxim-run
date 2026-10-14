@@ -160,3 +160,16 @@ test('the 404 page is not indexed', () => {
   assert.equal(doc.querySelector('meta[name="robots"]').content, 'noindex');
   assert.equal(doc.querySelectorAll('h1').length, 1);
 });
+
+test('the ring around the portrait links every project and personal account, each with a name', () => {
+  for (const { doc, lang } of pages) {
+    const links = [...doc.querySelectorAll('.orbit a')];
+    const hrefs = links.map((a) => a.getAttribute('href'));
+    for (const x of [...config.projects, ...config.socials]) assert.ok(hrefs.includes(x.url), `${lang.code}: ring misses ${x.url}`);
+    assert.equal(links.length, config.projects.length + config.socials.length, `${lang.code}: ring has extra items`);
+    for (const a of links) {
+      assert.ok(a.querySelector('.sr')?.textContent.trim() || a.querySelector('img')?.alt.trim(), `${lang.code}: ${a.href} has no accessible name`);
+      assert.ok(a.dataset.tip?.trim(), `${lang.code}: ${a.href} has no hover description`);
+    }
+  }
+});

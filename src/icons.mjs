@@ -2,15 +2,6 @@
 import * as si from 'simple-icons';
 
 const BRANDS = {
-  terraform: si.siTerraform,
-  kubernetes: si.siKubernetes,
-  argo: si.siArgo,
-  datadog: si.siDatadog,
-  githubactions: si.siGithubactions,
-  docker: si.siDocker,
-  helm: si.siHelm,
-  ansible: si.siAnsible,
-  linux: si.siLinux,
   github: si.siGithub,
   youtube: si.siYoutube,
   instagram: si.siInstagram,
@@ -23,7 +14,6 @@ const BRANDS = {
 const FILLED = {
   linkedin:
     'M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm2.5 7v7.5H9V10H6.5Zm1.25-4a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8ZM11 10v7.5h2.5v-3.9c0-1.1.6-1.7 1.4-1.7.8 0 1.2.6 1.2 1.7v3.9h2.5v-4.5c0-2.3-1.2-3.2-2.9-3.2-1.1 0-1.9.5-2.3 1.1V10H11Z',
-  aws: 'M7.6 9.6c0 .3 0 .5.1.7l.3.6c0 .1.1.2 0 .2l-.2.3-.5.3h-.2l-.3-.2-.4-.6-.3-.6c-.7.8-1.5 1.2-2.6 1.2-.7 0-1.3-.2-1.7-.6-.4-.4-.6-1-.6-1.6 0-.7.2-1.3.7-1.7.5-.5 1.2-.7 2-.7l.9.1.9.2v-.6c0-.6-.1-1-.4-1.3-.2-.2-.7-.4-1.3-.4l-.9.1-.9.3-.3.1h-.1c-.1 0-.2-.1-.2-.3v-.4l.1-.2.3-.2 1-.4c.4-.1.8-.1 1.3-.1 1 0 1.7.2 2.2.7.5.4.7 1.1.7 2.1v2.8Zm-3.5 1.3.9-.2c.3-.1.6-.3.8-.6l.3-.5.1-.8v-.4l-.8-.1-.8-.1c-.6 0-1 .1-1.3.3-.3.2-.4.6-.4 1 0 .4.1.7.3.9.2.4.5.5.9.5Zm7 .9-.3-.1-.2-.3-1.9-6.4-.1-.4c0-.2.1-.2.2-.2h.8l.3.1.2.3 1.4 5.4 1.3-5.4.1-.3.4-.1h.6l.4.1.1.3 1.3 5.5 1.4-5.5.2-.3.3-.1h.7c.2 0 .2.1.2.2v.3l-2 6.6-.2.3-.3.1h-.7l-.3-.1-.2-.3-1.3-5.2-1.2 5.2-.2.3-.3.1h-.7Zm10.4.2c-.4 0-.8 0-1.3-.1l-.9-.3-.3-.2-.1-.3v-.4c0-.2.1-.3.2-.3h.2l.3.1.8.3.9.1c.5 0 .8-.1 1.1-.3.3-.2.4-.4.4-.7 0-.2-.1-.4-.2-.5l-.8-.4-1.1-.4c-.6-.2-1-.5-1.3-.8-.3-.4-.4-.8-.4-1.2 0-.3.1-.7.2-.9.2-.3.4-.5.6-.7l.9-.4 1.1-.2h.6l.6.1.5.2.4.1.2.2.1.3v.4c0 .2-.1.3-.2.3l-.4-.1c-.4-.2-.9-.3-1.5-.3-.4 0-.8.1-1 .2-.2.2-.3.4-.3.7 0 .2.1.4.3.5l.9.4 1.1.4c.6.2 1 .5 1.2.8.3.3.4.7.4 1.1 0 .3-.1.7-.2 1-.2.3-.4.5-.6.7-.3.2-.6.4-.9.5l-1.2.2ZM21.1 15.9c-2.5 1.8-6.1 2.8-9.2 2.8-4.4 0-8.3-1.6-11.3-4.3-.2-.2 0-.5.3-.3 3.2 1.9 7.2 3 11.3 3 2.8 0 5.8-.6 8.6-1.8.4-.2.8.3.3.6Zm1-1.2c-.3-.4-2.1-.2-2.9-.1-.2 0-.3-.2-.1-.3 1.4-1 3.8-.7 4.1-.4.3.3-.1 2.6-1.4 3.7-.2.2-.4.1-.3-.1.3-.8 1-2.4.6-2.8Z',
 };
 
 // 24x24 line icons (stroke = currentColor).
@@ -49,11 +39,13 @@ export function sprite() {
   const filled = Object.entries(FILLED).map(
     ([id, d]) => `<symbol id="${id}" viewBox="0 0 24 24"><path fill="currentColor" d="${d}"/></symbol>`,
   );
+  // YouTube as a red badge with a white play mark, readable on any button or theme.
+  const badge = '<symbol id="youtube-badge" viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#FF0033"/><path d="M9.75 8.5v7l6-3.5-6-3.5Z" fill="#fff"/></symbol>';
   const lines = Object.entries(LINES).map(
     ([id, body]) =>
       `<symbol id="${id}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${body}</symbol>`,
   );
-  return `<svg xmlns="http://www.w3.org/2000/svg">${[...brand, ...filled, ...lines].join('')}</svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg">${[...brand, ...filled, badge, ...lines].join('')}</svg>`;
 }
 
-export const ICON_IDS = [...Object.keys(BRANDS), ...Object.keys(FILLED), ...Object.keys(LINES)];
+export const ICON_IDS = [...Object.keys(BRANDS), ...Object.keys(FILLED), 'youtube-badge', ...Object.keys(LINES)];

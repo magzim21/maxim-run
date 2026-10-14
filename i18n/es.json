@@ -39,7 +39,8 @@
     "statYears": "años en DevOps",
     "statCerts": "certificaciones",
     "statLaps": "vuelta al planeta",
-    "scroll": "baja"
+    "scroll": "baja",
+    "orbit": "Mis proyectos y cuentas"
   },
   "about": {
     "eyebrow": "01 · sobre mí",
@@ -283,5 +284,10 @@
     "h1": "404: esta ruta no está en el plan",
     "text": "terraform plan no encontró ningún recurso en esta dirección.",
     "back": "Ir al inicio"
+  },
+  "projects": {
+    "codelaw": "Plataforma «todo como código» para startups",
+    "leadpancakes": "Webs y Google Ads para negocios locales",
+    "mediaarchive": "De la tarjeta de la cámara a tu propio Deep Archive"
   }
 }

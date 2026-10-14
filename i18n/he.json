@@ -39,7 +39,8 @@
     "statYears": "שנים ב-DevOps",
     "statCerts": "הסמכות",
     "statLaps": "הקפה של כדור הארץ",
-    "scroll": "למטה"
+    "scroll": "למטה",
+    "orbit": "הפרויקטים והחשבונות שלי"
   },
   "about": {
     "eyebrow": "01 · עליי",
@@ -283,5 +284,10 @@
     "h1": "404: הנתיב הזה לא בתוכנית",
     "text": "terraform plan לא מצא משאב בכתובת הזאת.",
     "back": "לדף הבית"
+  },
+  "projects": {
+    "codelaw": "פלטפורמת „הכול כקוד” לסטארטאפים",
+    "leadpancakes": "אתרים ו-Google Ads לעסקים מקומיים",
+    "mediaarchive": "מכרטיסי המצלמה ל-Deep Archive משלכם"
   }
 }

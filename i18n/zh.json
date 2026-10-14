@@ -39,7 +39,8 @@
     "statYears": "年 DevOps 经验",
     "statCerts": "项认证",
     "statLaps": "次环游地球",
-    "scroll": "向下"
+    "scroll": "向下",
+    "orbit": "我的项目和账号"
   },
   "about": {
     "eyebrow": "01 · 关于我",
@@ -283,5 +284,10 @@
     "h1": "404：这条路径不在计划里",
     "text": "terraform plan 在这个地址找不到任何资源。",
     "back": "返回首页"
+  },
+  "projects": {
+    "codelaw": "面向初创公司的“一切皆代码”平台",
+    "leadpancakes": "为本地商家做网站和 Google 广告",
+    "mediaarchive": "把相机存储卡归档到你自己的 Deep Archive"
   }
 }

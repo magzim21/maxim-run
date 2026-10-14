@@ -214,8 +214,10 @@ h3 { font-size: 20px; }
 .halo { position: absolute; inset: -12% -22% 10%; background: var(--halo); filter: blur(10px); animation: breathe 7s ease-in-out infinite; }
 .portrait {
   position: relative; width: 100%; height: 100%; object-fit: contain;
-  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
-  mask-image: linear-gradient(to bottom, #000 72%, transparent 98%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 98%), linear-gradient(to right, transparent, #000 14%, #000 90%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 98%), linear-gradient(to right, transparent, #000 14%, #000 90%, transparent);
+  mask-composite: intersect;
   filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.35));
   animation: rise 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) both 0.15s;
 }
@@ -224,10 +226,20 @@ h3 { font-size: 20px; }
 .scan::after { content: ''; position: absolute; inset-inline: 0; height: 30%; top: -30%; background: linear-gradient(to bottom, transparent, rgba(57, 255, 136, 0.18), transparent); animation: scan 5s linear infinite; }
 [data-theme='nebula'] .scan::after { background: linear-gradient(to bottom, transparent, rgba(255, 79, 216, 0.16), transparent); }
 [data-theme='blueprint'] .scan::after { background: linear-gradient(to bottom, transparent, rgba(31, 95, 214, 0.12), transparent); }
-.orbit { position: absolute; left: 50%; top: 42%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; animation: spin 48s linear infinite; }
+.orbit { position: absolute; z-index: 2; left: 50%; top: 42%; width: 0; height: 0; margin: 0; padding: 0; list-style: none; animation: spin 48s linear infinite; }
 .orbit li { position: absolute; left: 0; top: 0; width: 46px; height: 46px; margin: -23px; transform: rotate(calc(360deg / var(--n) * var(--i))) translate(min(250px, 46vw)) rotate(calc(-360deg / var(--n) * var(--i))); }
-.orbit .i--logo { width: 46px; height: 46px; padding: 10px; border-radius: 14px; color: var(--accent); background: var(--card-2); border: 1px solid var(--line); box-shadow: 0 8px 24px -8px var(--glow); animation: spin 48s linear infinite reverse; }
-.orbit li:nth-child(even) .i--logo { color: var(--accent-2); }
+.orbit__link { display: block; width: 100%; height: 100%; border-radius: 14px; }
+.orbit__face { display: grid; place-items: center; width: 100%; height: 100%; padding: 9px; border-radius: 14px; color: var(--brand, var(--accent)); background: var(--card-2); border: 1px solid var(--line); box-shadow: 0 8px 24px -8px var(--glow); animation: spin 48s linear infinite reverse; transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1), border-color 0.25s, box-shadow 0.25s; }
+.orbit__face img, .orbit__face .i--logo { width: 100%; height: 100%; object-fit: contain; }
+.orbit__link:hover .orbit__face, .orbit__link:focus-visible .orbit__face { transform: scale(1.18); border-color: var(--brand, var(--accent)); box-shadow: 0 10px 30px -6px var(--brand, var(--glow)); }
+.orbit__link--codelaw .orbit__face, .orbit__link--leadpancakes .orbit__face, .orbit__link--mediaarchive .orbit__face { padding: 6px; background: #fff; }
+.orbit__link--linkedin { --brand: #0a66c2; }
+.orbit__link--github { --brand: var(--fg); }
+.orbit__link--instagram { --brand: #e1306c; }
+.orbit__link--telegram { --brand: #26a5e4; }
+.orbit__link--medium { --brand: var(--fg); }
+.orbit__link--credly { --brand: #ff6b00; }
+.hero__media:hover .orbit, .hero__media:hover .orbit__face, .orbit:focus-within, .orbit:focus-within .orbit__face { animation-play-state: paused; }
 .scrollhint { position: absolute; bottom: 18px; inset-inline-start: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font: 400 12px/1 'JetBrains Mono', monospace; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; }
 [dir='rtl'] .scrollhint { transform: translateX(50%); }
 .scrollhint span { width: 22px; height: 34px; border: 2px solid var(--line); border-radius: 12px; position: relative; }
@@ -452,7 +464,7 @@ h3 { font-size: 20px; }
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 28px; gap: 24px; }
   .hero__media { order: -1; width: min(300px, 72vw); }
   .orbit li { transform: rotate(calc(360deg / var(--n) * var(--i))) translate(min(170px, 39vw)) rotate(calc(-360deg / var(--n) * var(--i))); }
-  .orbit .i--logo { width: 36px; height: 36px; padding: 8px; }
+  .orbit__face { padding: 7px; }
   .orbit li { width: 36px; height: 36px; margin: -18px; }
   .scrollhint { display: none; }
   .about__grid, .travel { grid-template-columns: 1fr; }

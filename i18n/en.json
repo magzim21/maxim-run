@@ -39,7 +39,8 @@
     "statYears": "years in DevOps",
     "statCerts": "certifications",
     "statLaps": "lap around the planet",
-    "scroll": "scroll"
+    "scroll": "scroll",
+    "orbit": "My projects and accounts"
   },
   "about": {
     "eyebrow": "01 · about",
@@ -283,5 +284,10 @@
     "h1": "404: this path is not in the plan",
     "text": "terraform plan found no resource at this address.",
     "back": "Go home"
+  },
+  "projects": {
+    "codelaw": "Everything-as-Code platform for startups",
+    "leadpancakes": "Websites and Google Ads for local businesses",
+    "mediaarchive": "Camera cards to your own Deep Archive"
   }
 }

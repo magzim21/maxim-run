@@ -14,7 +14,6 @@ function shortHash(text) {
   return h.toString(16).padStart(8, '0').slice(0, 7);
 }
 
-const ORBIT = ['terraform', 'kubernetes', 'aws', 'argo', 'datadog', 'githubactions', 'docker', 'helm', 'ansible', 'linux'];
 
 export function pageUrl(config, lang) {
   return config.origin + lang.path;
@@ -134,7 +133,14 @@ function header({ config, lang, t }) {
 }
 
 function hero({ config, t, stats }) {
-  const orbit = ORBIT.map((id, i) => `<li style="--i:${i};--n:${ORBIT.length}">${icon(id, 'i i--logo')}</li>`).join('');
+  // The ring around the portrait: Max's projects, then his personal accounts. Every item is a link.
+  const ring = [
+    ...config.projects.map((p) => ({ id: p.id, url: p.url, label: '', tip: `${p.name}: ${t.projects[p.id]}`, art: `<img src="${p.img}" alt="${esc(p.name)}" width="46" height="46" loading="lazy" decoding="async">`, rel: 'noopener' })),
+    ...config.socials.map((s) => ({ id: s.id, url: s.url, label: s.label, tip: `${s.label} · ${s.handle}`, art: icon(s.id === 'youtube' ? 'youtube-badge' : s.id, 'i i--logo'), rel: 'me noopener' })),
+  ];
+  const orbit = ring
+    .map((r, i) => `<li style="--i:${i};--n:${ring.length}"><a class="orbit__link orbit__link--${r.id}" href="${r.url}" rel="${r.rel}" target="_blank" data-tip="${esc(r.tip)}"><span class="orbit__face">${r.art}</span>${r.label ? `<span class="sr">${esc(r.label)}</span>` : ''}</a></li>`)
+    .join('');
   return `<section class="hero" id="top">
   <div class="hero__text">
     <p class="prompt" dir="ltr"><span class="prompt__user">max@vancouver-island</span>:<span class="prompt__path">~</span>$ <span class="prompt__cmd" data-type="${esc(t.hero.prompt)}">${esc(t.hero.prompt)}</span></p>
@@ -154,7 +160,7 @@ function hero({ config, t, stats }) {
   </div>
   <div class="hero__media" data-tilt>
     <div class="halo" aria-hidden="true"></div>
-    <ul class="orbit" aria-hidden="true">${orbit}</ul>
+    <ul class="orbit" aria-label="${esc(t.hero.orbit)}">${orbit}</ul>
     <img class="portrait" src="${config.person.image}" srcset="/img/max-onyx-420.webp 420w, /img/max-onyx-720.webp 720w" sizes="(max-width: 760px) 78vw, 420px" width="720" height="1081" alt="${esc(t.hero.photoAlt)}" fetchpriority="high">
     <div class="scan" aria-hidden="true"></div>
   </div>
@@ -294,7 +300,7 @@ function travel({ config, t, assets }) {
     <h2>${esc(t.travel.title)}</h2>
     <p class="intro">${esc(t.travel.intro)}</p>
     <dl class="facts">${facts}</dl>
-    <a class="btn btn--primary" href="${yt.url}" rel="me noopener" target="_blank">${icon('youtube')}${esc(t.travel.youtube)}</a>
+    <a class="btn btn--primary" href="${yt.url}" rel="me noopener" target="_blank">${icon('youtube-badge')}${esc(t.travel.youtube)}</a>
   </div>
   <figure class="globe" data-globe data-land="/assets/${assets.land}" data-home="${lat},${lon}">
     <canvas width="560" height="560" aria-label="${esc(t.travel.route)}" role="img"></canvas>

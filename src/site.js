@@ -219,7 +219,7 @@ const bg = (() => {
           ctx.fillText(glyphs[(Math.random() * glyphs.length) | 0], i * size, y);
           ctx.globalAlpha = 1;
           if (y > h && Math.random() > 0.975) drops[i] = 0;
-          drops[i] += 0.5;
+          drops[i] += 0.25; // half a glyph every other frame: slow enough to read
         }
       };
     },
