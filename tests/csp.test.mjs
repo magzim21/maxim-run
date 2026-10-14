@@ -23,3 +23,15 @@ test('Vercel builds with the tests and serves dist/', () => {
   assert.equal(vercel.buildCommand, 'npm test');
   assert.equal(vercel.outputDirectory, 'dist');
 });
+
+test('everything under /assets/ has a content hash in its name (Vercel caches /assets/ as immutable)', () => {
+  const config = JSON.parse(readFileSync('config/site.config.json', 'utf8'));
+  const files = [...config.languages.map((l) => `dist${l.path}index.html`), 'dist/404.html'];
+  for (const f of files) {
+    const refs = [...readFileSync(f, 'utf8').matchAll(/["'(](\/assets\/[^"'#)\s]+)/g)].map((m) => m[1]);
+    assert.ok(refs.length >= 2, `${f}: no asset references found`);
+    for (const r of refs) assert.match(r, /\/assets\/[a-z]+\.[0-9a-f]{10}\.[a-z0-9]+$/, `${f}: ${r} has no content hash`);
+  }
+  const rule = vercel.headers.find((h) => h.source === '/assets/(.*)');
+  assert.match(rule.headers[0].value, /immutable/);
+});

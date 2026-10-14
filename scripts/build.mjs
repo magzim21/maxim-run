@@ -105,7 +105,9 @@ export async function build({ out = join(ROOT, 'dist') } = {}) {
   const land = JSON.stringify(landDots());
   assets.land = `land.${hash(land)}.json`;
   writeFileSync(join(out, 'assets', assets.land), land);
-  writeFileSync(join(out, 'assets', 'icons.svg'), sprite());
+  const svg = sprite();
+  assets.icons = `icons.${hash(svg)}.svg`;
+  writeFileSync(join(out, 'assets', assets.icons), svg);
 
   const build = buildId();
   const stats = { years: new Date().getUTCFullYear() - config.person.devopsSinceYear, certs: config.certifications.length };

@@ -2,16 +2,15 @@
 // scrolls slower than the page (parallax) and can only move so fast, so a quick scroll outruns the
 // rain and the drops glide after it. Stars and the network move with the page.
 
-// Matrix rain. Speed is in glyph rows per second; the trail is the number of rows behind the head;
-// one drop per rowsPerDrop cells of the page.
+// Matrix rain. Speed is in glyph rows per second; the trail is the number of rows behind the head.
 // (Max, 2026-10-13: half the earlier speed of 7.5 rows/s, twice the earlier ~4-row trail.)
-export const RAIN = { size: 16, rowsPerSecond: 3.75, trail: 9, rowsPerDrop: 70 };
+export const RAIN = { size: 16, rowsPerSecond: 3.75, trail: 9 };
 // depth: share of the page scroll the layer follows; maxSpeed: px/s it can scroll at most;
-// size, alpha and fall speed shrink with distance. The near layer keeps RAIN's speed and size.
+// size, alpha and fall speed shrink with distance; perScreen: drops in one screen height of the layer. Two layers only: the large bright front layer
+// made the first screen look cluttered (Max, 2026-10-14).
 export const LAYERS = [
-  { depth: 0.3, size: 10, alpha: 0.4, fall: 0.5, maxSpeed: 700 },
-  { depth: 0.55, size: 13, alpha: 0.65, fall: 0.75, maxSpeed: 1100 },
-  { depth: 0.8, size: 16, alpha: 1, fall: 1, maxSpeed: 1600 },
+  { depth: 0.3, size: 10, alpha: 0.4, fall: 0.5, maxSpeed: 700, perScreen: 25 },
+  { depth: 0.55, size: 13, alpha: 0.65, fall: 0.75, maxSpeed: 1100, perScreen: 35 },
 ];
 
 // Moves a layer's scroll offset towards depth × page scroll: eased, and never faster than maxSpeed.
@@ -74,7 +73,7 @@ export function createBackground(canvas, { root, reduced, css }) {
         const cols = Math.ceil(innerWidth / L.size);
         // A layer only travels depth × the page, so it is that much shorter than the page.
         const rows = () => Math.ceil(((docH - innerHeight) * L.depth + innerHeight) / L.size);
-        const count = () => Math.ceil((cols * rows()) / RAIN.rowsPerDrop);
+        const count = () => Math.ceil((L.perScreen * rows() * L.size) / innerHeight);
         return { ...L, cols, rows, count, offset: scrollY * L.depth, drops: Array.from({ length: count() }, () => newDrop(cols, rows(), Math.random, true)) };
       });
       return (dt) => {

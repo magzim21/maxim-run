@@ -10,7 +10,9 @@ const fill = (s, vars) => String(s).replace(/\{(\w+)\}/g, (_, k) => (k in vars ?
 const glitch = (text) =>
   `<span class="glitch__base">${esc(text)}</span>${[1, 2, 3].map((n) => `<span class="glitch__slice glitch__slice--${n}" data-text="${esc(text)}" aria-hidden="true"></span>`).join('')}`;
 
-const icon = (id, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="/assets/icons.svg#${id}"></use></svg>`;
+// The sprite file name carries a content hash (set per render): /assets/ is cached as immutable.
+let SPRITE = 'icons.svg';
+const icon = (id, cls = 'i') => `<svg class="${cls}" aria-hidden="true"><use href="/assets/${SPRITE}#${id}"></use></svg>`;
 
 // A short, stable pseudo commit hash for the career "git log" (decoration only).
 function shortHash(text) {
@@ -379,6 +381,7 @@ function footer({ config, lang, t, build }) {
 }
 
 export function renderPage({ config, lang, t, assets, build, stats }) {
+  SPRITE = assets.icons;
   const canonical = pageUrl(config, lang);
   const ctx = { config, lang, t, assets, build, stats };
   return `<!doctype html>
@@ -410,6 +413,7 @@ ${footer(ctx)}
 }
 
 export function renderNotFound({ config, lang, t, assets, build }) {
+  SPRITE = assets.icons;
   const ctx = { config, lang, t, assets, build };
   const n = t.notFound;
   return `<!doctype html>

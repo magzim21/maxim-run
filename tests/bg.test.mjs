@@ -34,9 +34,10 @@ test('parallax: far layers are smaller, dimmer, slower, and every layer scrolls 
     assert.ok(LAYERS[i - 1].depth < LAYERS[i].depth && LAYERS[i - 1].size < LAYERS[i].size && LAYERS[i - 1].alpha < LAYERS[i].alpha);
   }
   const near = LAYERS.at(-1);
+  assert.equal(LAYERS.length, 2, 'no front layer: it cluttered the first screen');
   assert.ok(near.depth < 1, 'even the near layer is behind the page');
-  assert.equal(near.size, RAIN.size);
-  assert.equal(near.fall, 1);
+  assert.ok(near.size < RAIN.size && near.alpha < 1, 'no large bright symbols');
+  assert.ok(LAYERS.reduce((n, L) => n + L.perScreen, 0) <= 60, 'at most about 60 drops on a screen');
   let o = 0;
   for (let t = 0; t < 5000; t += 16) o = followScroll(o, 1000, 16, near);
   assert.ok(Math.abs(o - 1000 * near.depth) < 0.5, 'settles at depth × scroll');
