@@ -1,5 +1,6 @@
 // maxim.run client: themes, motion, background canvas, travel globe, shell. No third-party code.
 import { runCommand } from './shell.js';
+import { createBackground } from './bg.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -184,114 +185,11 @@ if (tip) {
   document.addEventListener('mouseout', (e) => { if (e.target.closest('[data-tip]')) tip.classList.remove('is-on'); });
 }
 
-/* ---------- background canvas: matrix rain, starfield or network, by theme ---------- */
-const bg = (() => {
-  const c = $('[data-bg]');
-  if (!c) return { restart() {} };
-  const ctx = c.getContext('2d');
-  let raf = 0;
-  let w = 0;
-  let h = 0;
-  let state = null;
-  const dpr = Math.min(devicePixelRatio || 1, 2);
-  const css = (name) => getComputedStyle(root).getPropertyValue(name).trim();
-
-  const resize = () => {
-    w = c.width = Math.floor(innerWidth * dpr);
-    h = c.height = Math.floor(innerHeight * dpr);
-  };
-  const glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789{}[]<>$#=+terraformkubectl'.split('');
-
-  const scenes = {
-    terminal() {
-      const size = 16 * dpr;
-      const cols = Math.ceil(w / size);
-      const drops = Array.from({ length: cols }, () => Math.random() * -60);
-      const color = css('--accent');
-      return () => {
-        ctx.fillStyle = 'rgba(4, 17, 11, 0.16)';
-        ctx.fillRect(0, 0, w, h);
-        ctx.font = `${size}px "JetBrains Mono", monospace`;
-        for (let i = 0; i < cols; i++) {
-          const y = drops[i] * size;
-          ctx.fillStyle = Math.random() > 0.975 ? '#eafff2' : color;
-          ctx.globalAlpha = 0.55;
-          ctx.fillText(glyphs[(Math.random() * glyphs.length) | 0], i * size, y);
-          ctx.globalAlpha = 1;
-          if (y > h && Math.random() > 0.975) drops[i] = 0;
-          drops[i] += 0.25; // half a glyph every other frame: slow enough to read
-        }
-      };
-    },
-    nebula() {
-      const stars = Array.from({ length: Math.round((w * h) / (9000 * dpr * dpr)) }, () => ({
-        x: Math.random() * w, y: Math.random() * h, z: Math.random() * 0.8 + 0.2, t: Math.random() * 6,
-      }));
-      return (time) => {
-        ctx.clearRect(0, 0, w, h);
-        const off = scrollY * dpr;
-        for (const s of stars) {
-          const y = (((s.y - off * s.z * 0.3) % h) + h) % h;
-          const a = 0.35 + 0.65 * Math.abs(Math.sin(time / 1400 + s.t));
-          ctx.fillStyle = `rgba(255, 240, 255, ${a * s.z})`;
-          ctx.fillRect(s.x, y, 1.6 * s.z * dpr, 1.6 * s.z * dpr);
-        }
-      };
-    },
-    blueprint() {
-      const n = Math.min(46, Math.round((w * h) / (42000 * dpr * dpr)));
-      const pts = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.25 * dpr, vy: (Math.random() - 0.5) * 0.25 * dpr }));
-      const accent = css('--accent');
-      const link = 170 * dpr;
-      return (time) => {
-        ctx.clearRect(0, 0, w, h);
-        for (const p of pts) {
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
-        }
-        ctx.strokeStyle = accent;
-        for (let i = 0; i < n; i++) {
-          for (let j = i + 1; j < n; j++) {
-            const a = pts[i];
-            const b = pts[j];
-            const d = Math.hypot(a.x - b.x, a.y - b.y);
-            if (d > link) continue;
-            ctx.globalAlpha = (1 - d / link) * 0.35;
-            ctx.lineWidth = dpr;
-            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-            const k = ((time / 2200 + i * 0.13) % 1);
-            ctx.globalAlpha = (1 - d / link) * 0.9;
-            ctx.fillStyle = accent;
-            ctx.fillRect(a.x + (b.x - a.x) * k - dpr, a.y + (b.y - a.y) * k - dpr, 2.5 * dpr, 2.5 * dpr);
-          }
-        }
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = accent;
-        for (const p of pts) ctx.fillRect(p.x - 2 * dpr, p.y - 2 * dpr, 4 * dpr, 4 * dpr);
-      };
-    },
-  };
-
-  let last = 0;
-  const loop = (time) => {
-    raf = requestAnimationFrame(loop);
-    if (time - last < 33) return; // ~30 fps is plenty for a backdrop
-    last = time;
-    state(time);
-  };
-  const restart = () => {
-    cancelAnimationFrame(raf);
-    resize();
-    ctx.clearRect(0, 0, w, h);
-    state = (scenes[root.dataset.theme] || scenes.terminal)();
-    if (reduced) { state(0); return; }
-    raf = requestAnimationFrame(loop);
-  };
-  addEventListener('resize', () => { clearTimeout(c._t); c._t = setTimeout(restart, 200); });
-  document.addEventListener('visibilitychange', () => (document.hidden ? cancelAnimationFrame(raf) : restart()));
-  return { restart };
-})();
+/* ---------- background canvas: matrix rain, starfield or network, by theme (src/bg.js) ---------- */
+const bgCanvas = $('[data-bg]');
+const bg = bgCanvas
+  ? createBackground(bgCanvas, { root, reduced, css: (n) => getComputedStyle(root).getPropertyValue(n).trim() })
+  : { restart() {} };
 
 const saved = store.get('theme');
 setTheme(saved && themeMeta[saved] ? saved : root.dataset.theme || 'terminal', false);
